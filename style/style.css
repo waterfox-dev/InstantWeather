@@ -188,3 +188,8 @@ flex: 1; /* Take up remaining space */
     padding: 0% 6% 0% 6% !important;
   }
 }
+
+/*temporary*/
+html{
+  background-color: #1168da;
+}
