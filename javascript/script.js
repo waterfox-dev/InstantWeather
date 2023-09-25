@@ -77,9 +77,9 @@ function getWeather(insee)
     .catch(error => testDiv.innerHTML);
 }
 
-let strWeatherInfos = ["°C", "°C", "%", "H", "", "", "mm", "km/h", "°"];
+let strWeatherInfos = ["°C", "°C", "%", "H", "", "", "mm", "km/h", "°", ""];
 
-for(let i = 1; i < 10; i++){
+for(let i = 1; i < 11; i++){
     document.getElementById("weatherInfos-Text" + i).innerText = document.getElementById("tempSlider" + i).value + strWeatherInfos[i - 1];
     document.getElementById("tempSlider" + i).addEventListener('input', () =>
     {
@@ -87,6 +87,9 @@ for(let i = 1; i < 10; i++){
         if(i == 9){
             document.getElementById("arrow").style.transform = "rotate(" + document.getElementById("tempSlider" + i).value + "deg)";
             //console.log(document.getElementById("arrow").style.transform)
+        }
+        if(i = 10){
+            weatherIcon(document.getElementById("tempSlider" + i).value);
         }
     })
 }
