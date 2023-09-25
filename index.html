@@ -10,10 +10,10 @@
             <h1 class="FirstHeader" id="firstHeader">Instant Weather</h1>
         </header>
         <div class="CenterMeteo">
-            <input id="searchBar" class="SearchBar" placeholder="Enter your city">
+            <input id="searchBar" class="SearchBar" placeholder="Entrer un code postal">
             <div id="divButtonCitySearch" class="SearchCity" ></div>
             <div class="DivFlex">
-                <div class="LeftWeather">
+                <!-- <div class="LeftWeather">
                     <div class="StarContainer" id="starContainer"></div>
                     <main>
                         <form class="DemonstrationForm">
@@ -33,20 +33,20 @@
                             </div>
                         </div>
                     </main>
-                </div>
+                </div> -->
                 <div id="weatherInfos" class="WeatherInfos">
                     <div id="weatherInfos-TempMin" class="WeatherInfos-TempMin WeatherInfosDiv">
-                        <p>Temp min : </p>
+                        <p>Température minimale : </p>
                         <p id="weatherInfos-Text1"></p>
                         <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider1">
                     </div>
                     <div id="weatherInfos-TempMax" class="WeatherInfos-TempMax WeatherInfosDiv">
-                        <p>Temp max : </p>
+                        <p>Température maximale : </p>
                         <p id="weatherInfos-Text2"></p>
                         <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider2">
                     </div>
                     <div id="weatherInfos-ProbabilitePluie" class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
-                        <p>Probabilité pluie : </p>
+                        <p>Risque de précipitations : </p>
                         <p id="weatherInfos-Text3"></p>
                         <input type="range" step="1" min="0" max="100" class="DemonstrationSlider" id="tempSlider3">
                     </div>
@@ -71,12 +71,12 @@
                         <input type="range" step="1" min="0" max="300" class="DemonstrationSlider" id="tempSlider7">
                     </div>
                     <div id="weatherInfos-VitesseVent" class="WeatherInfos-VitesseVent WeatherInfosDiv">
-                        <p>Vitesse du vent à 10m : </p>
+                        <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
                         <p id="weatherInfos-Text8"></p>
                         <input type="range" step="1" min="0" max="50" class="DemonstrationSlider" id="tempSlider8">
                     </div>
                     <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
-                        <p>Direction du vent à 10m : </p>
+                        <p>Direction du vent <span  class="details">(à 10m)</span> : </p>
                         <p id="weatherInfos-Text9"></p>
                         <input type="range" step="1" min="0" max="360" class="DemonstrationSlider" id="tempSlider9">
                     </div>
