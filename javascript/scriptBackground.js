@@ -40,8 +40,8 @@ function createRandomStars(nb)
         const star = document.createElement('div');
         star.className = 'Star';
     
-        const maxX = window.innerWidth - 10;
-        const maxY = window.innerHeight - 10;
+        const maxX = window.innerWidth - 50;
+        const maxY = window.innerHeight - 50;
     
         const randomX = Math.floor(Math.random() * maxX);
         const randomY = Math.floor(Math.random() * maxY);
