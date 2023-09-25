@@ -82,6 +82,7 @@ body
   background-color: yellow;
   border-radius: 50%;
   animation: blink 5s infinite alternate;
+  z-index: 0;
 }
 
 .SearchCity{
