@@ -35,51 +35,71 @@
                     </main>
                 </div> -->
                 <div id="weatherInfos" class="WeatherInfos">
-                    <div id="weatherInfos-TempMin" class="WeatherInfos-TempMin WeatherInfosDiv">
-                        <p>Température minimale : </p>
-                        <p id="weatherInfos-Text1"></p>
-                        <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider1">
+                    <!-- Temperature slide -->
+                    <div id="temperature" class="slide">
+                        <div id="weatherInfos-TempMin" class="WeatherInfos-TempMin WeatherInfosDiv">
+                            <p>Température minimale : </p>
+                            <p id="weatherInfos-Text1"></p>
+                            <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider1">
+                        </div>
+
+                        <div id="weatherInfos-TempMax" class="WeatherInfos-TempMax WeatherInfosDiv">
+                            <p>Température maximale : </p>
+                            <p id="weatherInfos-Text2"></p>
+                            <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider2">
+                        </div>
                     </div>
-                    <div id="weatherInfos-TempMax" class="WeatherInfos-TempMax WeatherInfosDiv">
-                        <p>Température maximale : </p>
-                        <p id="weatherInfos-Text2"></p>
-                        <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider2">
+
+                    <!-- Rain slide -->
+                    <div id="rain" class="slide">
+                        <div id="weatherInfos-ProbabilitePluie" class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
+                            <p>Risque de précipitations : </p>
+                            <p id="weatherInfos-Text3"></p>
+                            <input type="range" step="1" min="0" max="100" class="DemonstrationSlider" id="tempSlider3">
+                        </div>
+
+                        <div id="weatherInfos-CumulDeLaPluie" class="WeatherInfos-CumulDeLaPluie WeatherInfosDiv">
+                            <p>Cumul de la pluie sur la journée : </p>
+                            <p id="weatherInfos-Text7"></p>
+                            <input type="range" step="1" min="0" max="300" class="DemonstrationSlider" id="tempSlider7">
+                        </div>
+
+                        <div id="weatherInfos-NombreHeureEnsoleillement" class="WeatherInfos-NombreHeureEnsoleillement WeatherInfosDiv">
+                            <p>Nombre heure ensoleillement : </p>
+                            <p id="weatherInfos-Text4"></p>
+                            <input type="range" step="1" min="0" max="24" class="DemonstrationSlider" id="tempSlider4">
+                        </div>
                     </div>
-                    <div id="weatherInfos-ProbabilitePluie" class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
-                        <p>Risque de précipitations : </p>
-                        <p id="weatherInfos-Text3"></p>
-                        <input type="range" step="1" min="0" max="100" class="DemonstrationSlider" id="tempSlider3">
+
+                    <!-- Position slide -->
+                    <div id="position" class="slide">
+                        <div id="weatherInfos-Latitude" class="WeatherInfos-Latitude WeatherInfosDiv">
+                            <p>Latitude : </p>
+                            <p id="weatherInfos-Text5"></p>
+                            <input type="range" step="1" min="-20" max="100" class="DemonstrationSlider" id="tempSlider5">
+                        </div>
+
+                        <div id="weatherInfos-Longitude" class="WeatherInfos-Longitude WeatherInfosDiv">
+                            <p>Longitude : </p>
+                            <p id="weatherInfos-Text6"></p>
+                            <input type="range" step="1" min="-20" max="100" class="DemonstrationSlider" id="tempSlider6">
+                        </div>
                     </div>
-                    <div id="weatherInfos-NombreHeureEnsoleillement" class="WeatherInfos-NombreHeureEnsoleillement WeatherInfosDiv">
-                        <p>Nombre heure ensoleillement : </p>
-                        <p id="weatherInfos-Text4"></p>
-                        <input type="range" step="1" min="0" max="24" class="DemonstrationSlider" id="tempSlider4">
+
+                    <!-- Wind slide -->
+                    <div id="wind" class="slide">
+                        <div id="weatherInfos-VitesseVent" class="WeatherInfos-VitesseVent WeatherInfosDiv">
+                            <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
+                            <p id="weatherInfos-Text8"></p>
+                            <input type="range" step="1" min="0" max="50" class="DemonstrationSlider" id="tempSlider8">
+                        </div>
+                        <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
+                            <p>Direction du vent <span  class="details">(à 10m)</span> : </p>
+                            <p id="weatherInfos-Text9"></p>
+                            <input type="range" step="1" min="0" max="360" class="DemonstrationSlider" id="tempSlider9">
+                        </div>
                     </div>
-                    <div id="weatherInfos-Latitude" class="WeatherInfos-Latitude WeatherInfosDiv">
-                        <p>Latitude : </p>
-                        <p id="weatherInfos-Text5"></p>
-                        <input type="range" step="1" min="-20" max="100" class="DemonstrationSlider" id="tempSlider5">
-                    </div>
-                    <div id="weatherInfos-Longitude" class="WeatherInfos-Longitude WeatherInfosDiv">
-                        <p>Longitude : </p>
-                        <p id="weatherInfos-Text6"></p>
-                        <input type="range" step="1" min="-20" max="100" class="DemonstrationSlider" id="tempSlider6">
-                    </div>
-                    <div id="weatherInfos-CumulDeLaPluie" class="WeatherInfos-CumulDeLaPluie WeatherInfosDiv">
-                        <p>Cumul de la pluie sur la journée : </p>
-                        <p id="weatherInfos-Text7"></p>
-                        <input type="range" step="1" min="0" max="300" class="DemonstrationSlider" id="tempSlider7">
-                    </div>
-                    <div id="weatherInfos-VitesseVent" class="WeatherInfos-VitesseVent WeatherInfosDiv">
-                        <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
-                        <p id="weatherInfos-Text8"></p>
-                        <input type="range" step="1" min="0" max="50" class="DemonstrationSlider" id="tempSlider8">
-                    </div>
-                    <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
-                        <p>Direction du vent <span  class="details">(à 10m)</span> : </p>
-                        <p id="weatherInfos-Text9"></p>
-                        <input type="range" step="1" min="0" max="360" class="DemonstrationSlider" id="tempSlider9">
-                    </div>
+                        
                 </div>
                 <div class="RightWeather">
                 </div>

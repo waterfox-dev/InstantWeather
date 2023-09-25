@@ -135,7 +135,8 @@ body
 }
 
 .WeatherInfos {
-  width: 40%;
+  position: absolute;
+  display: flex;
 }
 
 .WeatherInfosDiv {
@@ -187,6 +188,33 @@ flex: 1; /* Take up remaining space */
   .middle-top-text, .middle-bottom-text, .middle-left-text, .middle-right-text {
     padding: 0% 6% 0% 6% !important;
   }
+}
+
+/* -------------- Slide custom -------------- */
+
+#temperature {
+  background-color: #eeb61d;
+
+}
+
+#rain {
+  background-color: #1dacee;
+}
+
+#position {
+  background-color: #10da1a;
+}
+
+#wind {
+  background-color: #808080;
+}
+
+.slide {
+  width: 20vw;
+  height: 15vw;
+  border-radius: 15px;
+  margin: 30px;
+  padding: 7px;
 }
 
 /*temporary*/
