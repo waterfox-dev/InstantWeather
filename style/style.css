@@ -25,7 +25,7 @@
       opacity: 1;
   }
 }
-
+ 
 body
 {
   -webkit-transition:  all 1.5s ease;
@@ -40,6 +40,10 @@ body
 
   background-size: cover;
   background-attachment: fixed;
+}
+
+.details{
+  font-size: 18px;
 }
 
 .FirstHeader
@@ -78,6 +82,7 @@ body
   background-color: yellow;
   border-radius: 50%;
   animation: blink 5s infinite alternate;
+  z-index: 0;
 }
 
 .SearchCity{
@@ -130,7 +135,8 @@ body
 }
 
 .WeatherInfos {
-  width: 40%;
+  position: absolute;
+  display: flex;
 }
 
 .WeatherInfosDiv {
@@ -174,8 +180,44 @@ flex: 1; /* Take up remaining space */
   body{
     font-size: 1.8vw !important;
   }
+
+  .details{
+    font-size: 1vw;
+  }
   
   .middle-top-text, .middle-bottom-text, .middle-left-text, .middle-right-text {
     padding: 0% 6% 0% 6% !important;
   }
+}
+
+/* -------------- Slide custom -------------- */
+
+#temperature {
+  background-color: #eeb61d;
+
+}
+
+#rain {
+  background-color: #1dacee;
+}
+
+#position {
+  background-color: #10da1a;
+}
+
+#wind {
+  background-color: #808080;
+}
+
+.slide {
+  width: 20vw;
+  height: 15vw;
+  border-radius: 15px;
+  margin: 30px;
+  padding: 7px;
+}
+
+/*temporary*/
+html{
+  background-color: #1168da;
 }
