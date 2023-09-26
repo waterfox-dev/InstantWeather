@@ -201,6 +201,7 @@ flex: 1; /* Take up remaining space */
   margin: 30px;
   padding: 7px;
   background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .slide:hover{
@@ -216,6 +217,7 @@ flex: 1; /* Take up remaining space */
 	100% {
 		transform: scale(1.2);
     transform-origin: 50% 0%;
+    box-shadow: 50px 20px 30px rgba(0, 0, 0, 0.2);
 	}
 }
 
@@ -243,5 +245,5 @@ button:hover {
 
 /*temporary*/
 html{
-  background-color: #ffaef8;
+  background-color: #88daf3;
 }
