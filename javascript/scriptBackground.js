@@ -1,9 +1,7 @@
 // Elements Reference
-let tempSlider = this.document.getElementById('tempSlider');
-let hourSlider = this.document.getElementById('hourSlider');
 let tempLine = this.document.getElementById('tempLine');
 let hourLine = this.document.getElementById('hourLine');
-let starContainer = this.document.getElementById('starContainer');
+let starContainer = this.document.getElementById('test'); //TODO : update this
 
 //Internal variables
 let dawnHour = 8;
@@ -12,7 +10,7 @@ let currentHour = new Date().getHours();
 
 let degreeNumber = 70;
 let degreeVars = ['--wth-very-cold-color', '--wth-cold-color', '--wth-normal-color', '--wth-hot-color', '--wth-very-hot-color', '--wth-sun-color'];
-let currentDegree = tempSlider.value;
+let currentDegree = 10;
 
 //Functions
 
@@ -118,27 +116,9 @@ function updateDegree(newDegree)
  */
 function init()
 {
-    hourSlider.value = currentHour;
-
-    tempLine.innerText = `${tempSlider.value} °C`;
-    hourLine.innerText = `${hourSlider.value}:00`;
-
     udpateHour(currentHour);
     updateDegree(currentDegree);
 }
-
-//Event Listener
-tempSlider.addEventListener('input', (event) =>
-{
-    updateDegree(parseInt(event.target.value));
-    tempLine.innerText = `${event.target.value} °C`;
-})
-
-hourSlider.addEventListener('input', (event) =>
-{
-    udpateHour(parseInt(event.target.value));
-    hourLine.innerText = `${event.target.value}:00`;
-})
 
 //First Automation
 init();
