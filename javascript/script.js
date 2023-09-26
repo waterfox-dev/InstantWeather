@@ -3,6 +3,8 @@ let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m", "weather"]
+let actualCity;
+
 searchBar.addEventListener("input", (event) =>
 {
     //console.log(parseInt(searchBar.value));
@@ -35,7 +37,8 @@ function getCity(cp)
                     //console.log(button.textContent);
                     searchBar.value = button.textContent;
                     //console.log(button.id);
-                    getWeather(button.id);
+                    getWeather(button.id, 0);
+                    actualCity = button.id;
                     while (divButtonCitySearch.hasChildNodes()) {
                         //console.log(divButtonCitySearch.firstChild);
                         divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
@@ -69,3 +72,23 @@ function getWeather(insee, day)
     )
 }
 
+for(let i = 1; i < 8; i++){
+    document.getElementById(`day${i}`).addEventListener("click", () => {
+        getWeather(actualCity, i-1);
+    });
+}
+
+// Get the current date
+var currentDate = new Date();
+
+// Create and append list items for the next 7 days
+for (var i = 1; i < 8; i++) {
+    var listItem = document.getElementById(`day${i}`);
+
+    // Add the current date and increment it by 1 day
+    var dateString = currentDate.toLocaleDateString();
+    listItem.textContent = dateString;
+
+    // Increment the current date by 1 day for the next iteration
+    currentDate.setDate(currentDate.getDate() + 1);
+}
