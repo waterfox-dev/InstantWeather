@@ -60,12 +60,9 @@ function getWeather(insee, day)
         data =>
         {
             let weather = data.forecast[day];
-            console.log(weather)
 
             for(let i = 1; i < 10; i++)
             {
-
-                console.log(`${i} - ${strWeatherKey[i-1]} => ${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`)
                 document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
             }
         }
