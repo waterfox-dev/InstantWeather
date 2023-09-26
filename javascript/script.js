@@ -1,7 +1,8 @@
 let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
-
+let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
+let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m", "weather"]
 searchBar.addEventListener("input", (event) =>
 {
     //console.log(parseInt(searchBar.value));
@@ -58,15 +59,16 @@ function getWeather(insee, day)
     .then(
         data =>
         {
-            for(let i = 1; i < 8; i++)
+            let weather = data.forecast[day];
+            console.log(weather)
+
+            for(let i = 1; i < 10; i++)
             {
-                
+
+                console.log(`${i} - ${strWeatherKey[i-1]} => ${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`)
+                document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
             }
-            document.getElementById("arrow").style.transform = "rotate(" + weather.dirwind10m + "deg)";
-            //console.log(document.getElementById("arrow").style.transform);
         }
     )
-    .catch(error => testDiv.innerHTML);
 }
 
-let strWeatherInfos = ["°C", "°C", "%", "H", "", "", "mm", "km/h", "°", ""];
