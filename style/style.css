@@ -121,7 +121,7 @@ body
   width: 80%;
   font-size: 3vw;
   padding: 10px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.1);
   color: white;
   border: 2px solid #ffffff;
   border-radius: 100px;
@@ -194,29 +194,13 @@ flex: 1; /* Take up remaining space */
 
 /* -------------- Slide custom -------------- */
 
-#temperature {
-  background-color: #eeb61d;
-  
-}
-
-#rain {
-  background-color: #1dacee;
-}
-
-#position {
-  background-color: #10da1a;
-}
-
-#wind {
-  background-color: #808080;
-}
-
 .slide {
   width: 20vw;
   height: 15vw;
   border-radius: 15px;
   margin: 30px;
   padding: 7px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .slide:hover{
@@ -226,14 +210,14 @@ flex: 1; /* Take up remaining space */
 @keyframes myAnim {
 	0% {
 		transform: scale(1);
+    transform-origin: 50% 0%;
 	}
 
 	100% {
 		transform: scale(1.2);
+    transform-origin: 50% 0%;
 	}
 }
-
-
 
 /* -------------- Day Bar -------------- */
 
@@ -255,11 +239,9 @@ button {
 button:hover {
   cursor: pointer;
 }
- 
-
 
 
 /*temporary*/
 html{
-  background-color: #1168da;
+  background-color: #ffaef8;
 }
