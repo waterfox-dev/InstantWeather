@@ -40,6 +40,8 @@ body
 
   background-size: cover;
   background-attachment: fixed;
+
+  
 }
 
 .details{
@@ -130,7 +132,7 @@ body
 .DivFlex{
   margin-top: 50px;
   width: 100%;
-  display: flex;
+  display: flexbox;
   flex-direction: row;
 }
 
@@ -194,7 +196,7 @@ flex: 1; /* Take up remaining space */
 
 #temperature {
   background-color: #eeb61d;
-
+  
 }
 
 #rain {
@@ -216,6 +218,46 @@ flex: 1; /* Take up remaining space */
   margin: 30px;
   padding: 7px;
 }
+
+.slide:hover{
+  animation: myAnim 0.45s linear 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.2);
+	}
+}
+
+
+
+/* -------------- Day Bar -------------- */
+
+.dayBar {
+  align-items: center;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  
+}
+
+button {
+  width: 9vw;
+  height: 3vh;
+  border-radius: 5px;
+  margin: 0.7vw;
+}
+
+button:hover {
+  cursor: pointer;
+}
+ 
+
+
 
 /*temporary*/
 html{
