@@ -128,7 +128,7 @@ function changeTermometer(tempsMedium){
         document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 100%)";
     }
     else if(tempsTermometer >= 66){
-        document.getElementById("divtermometerInside").style.backgroundColor = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 50%, #fa6464 100%)";
+        document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 50%, #fa6464 100%)";
     }
 
     document.getElementById("termometerActual").innerText = tempsMedium + "°C";
