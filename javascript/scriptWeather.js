@@ -4,6 +4,5 @@ function weatherIcon(value){
         case 1 : 
             img.src = "assets/weather/1.svg";
             console.log("Yes : " + value + " " + img.src);
-
     }
 }
