@@ -38,8 +38,6 @@ function getCity(cp)
                 button.addEventListener('click', () =>
                 {
 
-                    document.getElementById("weatherInfos").style.visibility = 'visible';
-                    document.getElementById("dayBar").style.visibility = 'visible';
 
                     //console.log(button.id);
                     //console.log(button.textContent);
@@ -77,6 +75,8 @@ function getWeather(insee, day)
             }
             else 
             {
+                document.getElementById("weatherInfos").style.visibility = 'visible';
+                document.getElementById("dayBar").style.visibility = 'visible';
                 let weather = data.forecast[day];
 
                 for(let i = 1; i < 10; i++)
