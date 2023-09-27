@@ -34,14 +34,14 @@
                         </div>
                     </main>
                 </div> -->
-                <div class="dayBar">
-                    <button id="day1"></button>
-                    <button id="day2"></button>
-                    <button id="day3"></button>
-                    <button id="day4"></button>
-                    <button id="day5"></button>
-                    <button id="day6"></button>
-                    <button id="day7"></button>
+                <div id="dayBar" class="dayBar">
+                    <button id="day1" class="dayButton"></button>
+                    <button id="day2" class="dayButton"></button>
+                    <button id="day3" class="dayButton"></button>
+                    <button id="day4" class="dayButton"></button>
+                    <button id="day5" class="dayButton"></button>
+                    <button id="day6" class="dayButton"></button>
+                    <button id="day7" class="dayButton"></button>
                 </div>
 
                 <div id="weatherInfos" class="WeatherInfos">
@@ -98,6 +98,32 @@
                         <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
                             <p>Direction du vent <span  class="details">(à 10m)</span> : </p>
                             <p id="weatherInfos-Text9"></p>
+                        </div>
+                        <div class="circle">
+                            <div class="quarter quarter-top-left"></div>
+                            <div class="quarter quarter-top-right"></div>
+                            <div class="quarter quarter-bottom-left"></div>
+                            <div class="quarter quarter-bottom-right"></div>
+                            <div class="little-quarter little-quarter-top-left"></div>
+                            <div class="little-quarter little-quarter-top-right"></div>
+                            <div class="little-quarter little-quarter-bottom-left"></div>
+                            <div class="little-quarter little-quarter-bottom-right"></div>
+                            <svg id="arrow" class="Arrow" height="150" width="150">
+                                <polygon points="75,20 45,110 105,110" class="triangle" />
+                                Sorry, your browser does not support inline SVG.
+                            </svg>
+                            <div class="middle-top-text">
+                            <p>N</p>
+                            </div>
+                            <div class="middle-bottom-text">
+                            <p>S</p>
+                            </div>
+                            <div class="middle-left-text">
+                            <p>W</p>
+                            </div>
+                            <div class="middle-right-text">
+                            <p>E</p>
+                            </div>
                         </div>
                     </div>
                     <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">

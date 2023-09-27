@@ -2,14 +2,18 @@ let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
-let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m", "weather"]
+let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m"]
 let actualCity;
+let actualDayHover = 0;
+
+console.log("aaaaaaaaa");
 
 searchBar.addEventListener("input", (event) =>
 {
     //console.log(parseInt(searchBar.value));
     getCity(parseInt(searchBar.value));
 });
+
 
 function getCity(cp)
 {
@@ -33,7 +37,11 @@ function getCity(cp)
                 divButtonCitySearch.appendChild(button);
                 button.addEventListener('click', () =>
                 {
-                    console.log(button.id);
+
+                    document.getElementById("weatherInfos").style.visibility = 'visible';
+                    document.getElementById("dayBar").style.visibility = 'visible';
+
+                    //console.log(button.id);
                     //console.log(button.textContent);
                     searchBar.value = button.textContent;
                     //console.log(button.id);
@@ -53,7 +61,6 @@ function getCity(cp)
     )
 }
 
-
 function getWeather(insee, day)
 {
     //console.log(insee);
@@ -62,12 +69,15 @@ function getWeather(insee, day)
     .then(
         data =>
         {
+            console.log(data.code);
             let weather = data.forecast[day];
 
             for(let i = 1; i < 10; i++)
             {
                 document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
             }
+            document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+            //console.log( `rotate(${weather['dirwind10m']}deg)`);
         }
     )
 }
@@ -75,13 +85,18 @@ function getWeather(insee, day)
 for(let i = 1; i < 8; i++){
     document.getElementById(`day${i}`).addEventListener("click", () => {
         getWeather(actualCity, i-1);
+
+        if(actualDayHover != 0){
+            document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
+        }
+        document.getElementById(`day${i}`).classList.add("dayHover");
+        actualDayHover = i;
     });
 }
 
 // Get the current date
 var currentDate = new Date();
 
-// Create and append list items for the next 7 days
 for (var i = 1; i < 8; i++) {
     var listItem = document.getElementById(`day${i}`);
 
