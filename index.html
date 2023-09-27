@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>Instant Weather</title>
         <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/styleBackground.css">
+        <link rel="stylesheet" href="style/styleMiniBonus.css">
     </head>
     <body>
         <header>
@@ -14,7 +16,7 @@
             <div id="divButtonCitySearch" class="SearchCity" ></div>
             <div class="DivFlex">
                 <div id="dayBar" class="dayBar">
-                    <button id="day1" class="dayButton"></button>
+                    <button id="day1" class="dayButton dayHover"></button>
                     <button id="day2" class="dayButton"></button>
                     <button id="day3" class="dayButton"></button>
                     <button id="day4" class="dayButton"></button>
@@ -35,8 +37,13 @@
                             <p>Température maximale : </p>
                             <p id="weatherInfos-Text2"></p>
                         </div>
-
-                        <div id="divtermometer" class="Divtermometer">
+                        
+                        <div id="divtermometerData" class="DivtermometerData">
+                            <p class="TermometerMin">-20°C</p>
+                            <p id="termometerActual" class="TermometerActual"></p>
+                            <p class="TermometerMax">50°C</p>
+                        </div>
+                        <div class="Divtermometer">
                             <div id="divtermometerInside" class="DivtermometerInside"></div>
                         </div>
                     </div>

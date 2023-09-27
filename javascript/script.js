@@ -4,7 +4,7 @@ let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m"]
 let actualCity;
-let actualDayHover = 0;
+let actualDayHover = 1;
 
 searchBar.addEventListener("input", (event) =>
 {
@@ -60,7 +60,7 @@ function getCity(cp)
 function getWeather(insee, day)
 {
     //console.log(insee);
-    fetch(`https://api.meteo-concept.com/api/forecast/daily?token=196a097c4b2b523569d2099ae7fd051b2afbacf5b97bf204b9876facfe68d66e&insee=${insee}`)
+    fetch(`https://api.meteo-concept.com/api/forecast/daily?token=5a53a6c6c06bdf4db59b5848acd3050994fd48fff83f9f7c201cf0f7447a6835&insee=${insee}`)
     .then(response => response.json())
     .then(
         data =>
@@ -68,6 +68,7 @@ function getWeather(insee, day)
             if('code' in data)
             {
                 window.alert("L'api meteo concept ne fourni pas de prévisions pour ce lieu");
+                console.log(data['code']);
                 document.getElementById("weatherInfos").style.visibility = 'hidden';
                 document.getElementById("dayBar").style.visibility = 'hidden';
             }
@@ -95,9 +96,7 @@ for(let i = 1; i < 8; i++){
     document.getElementById(`day${i}`).addEventListener("click", () => {
         getWeather(actualCity, i-1);
 
-        if(actualDayHover != 0){
-            document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
-        }
+        document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
         document.getElementById(`day${i}`).classList.add("dayHover");
         actualDayHover = i;
     });
@@ -131,4 +130,6 @@ function changeTermometer(tempsMedium){
     else if(tempsTermometer >= 66){
         document.getElementById("divtermometerInside").style.backgroundColor = "red";
     }
+
+    document.getElementById("termometerActual").innerText = tempsMedium + "°C";
 }
