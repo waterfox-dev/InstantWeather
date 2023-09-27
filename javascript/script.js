@@ -69,15 +69,22 @@ function getWeather(insee, day)
     .then(
         data =>
         {
-            console.log(data.code);
-            let weather = data.forecast[day];
-
-            for(let i = 1; i < 10; i++)
+            if('code' in data)
             {
-                document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
+                window.alert("L'api meteo concept ne fourni pas de prévisions pour ce lieu");
+                document.getElementById("weatherInfos").style.visibility = 'hidden';
+                document.getElementById("dayBar").style.visibility = 'hidden';
             }
-            document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
-            //console.log( `rotate(${weather['dirwind10m']}deg)`);
+            else 
+            {
+                let weather = data.forecast[day];
+
+                for(let i = 1; i < 10; i++)
+                {
+                    document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
+                }
+                document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+            }
         }
     )
 }
