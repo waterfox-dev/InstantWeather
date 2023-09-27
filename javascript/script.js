@@ -6,8 +6,6 @@ let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude
 let actualCity;
 let actualDayHover = 0;
 
-console.log("aaaaaaaaa");
-
 searchBar.addEventListener("input", (event) =>
 {
     //console.log(parseInt(searchBar.value));
@@ -83,7 +81,11 @@ function getWeather(insee, day)
                 {
                     document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
                 }
+                document.getElementById("weatherInfos-Text10").innerText = weather['weather'];
+
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+                let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
+                changeTermometer(tempsMedium);
             }
         }
     )
@@ -113,4 +115,20 @@ for (var i = 1; i < 8; i++) {
 
     // Increment the current date by 1 day for the next iteration
     currentDate.setDate(currentDate.getDate() + 1);
+}
+
+function changeTermometer(tempsMedium){
+    let tempsTermometer = ((tempsMedium + 20)*100)/70;
+    console.log(tempsMedium + " " + tempsTermometer);
+    document.getElementById("divtermometerInside").style.width = `${tempsTermometer}%`;
+
+    if(tempsTermometer < 33){
+        document.getElementById("divtermometerInside").style.backgroundColor = "blue";
+    }
+    else if(tempsTermometer >= 33 && tempsTermometer < 66){
+        document.getElementById("divtermometerInside").style.backgroundColor = "yellow";
+    }
+    else if(tempsTermometer >= 66){
+        document.getElementById("divtermometerInside").style.backgroundColor = "red";
+    }
 }

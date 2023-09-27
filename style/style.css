@@ -50,9 +50,11 @@ body
 
 .FirstHeader
 {
+  background-color: rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-size: 50px;
+  font-size: 72px;
   margin: 0;
+  color: #ffffff;
 }
 
 .DemonstrationForm 
@@ -264,21 +266,23 @@ button:hover:after {
 
 .Divtermometer{
   position: relative;
-  height: 80%;
-  width: 30%;
+  height: 15%;
+  width: 95%;
   background-color: transparent;
   border: 2px solid #dedede;
   border-radius: 10px;
+  margin-top: 25%;
 }
 
 .DivtermometerInside{
+  transition: transform 1s;
   position: absolute;
-  bottom: 0; /* Place la div interne en bas de la div externe */
+  bottom: -1px; /* Place la div interne en bas de la div externe */
   background-color: #eeb61d;
-  border: 2px solid #dedede;
+  border: 1px solid #dedede;
   border-radius: 10px;
-  height: 40%;
-  width: 100%;
+  width: 26%;
+  height: 100%;
 }
 
 .DivCumulPluie{
@@ -444,6 +448,7 @@ button:hover:after {
 .triangle{
   stroke: white;
   stroke-width: 3;
+  fill: #2c0b8e;
 
 @keyframes mymove {
   0%   {opacity:0}
@@ -467,9 +472,4 @@ button:hover:after {
   .middle-top-text, .middle-bottom-text, .middle-left-text, .middle-right-text {
     padding: 0% 6% 0% 6% !important;
   }
-}
-
-/*temporary*/
-html{
-  background-color: #88daf3;
 }
