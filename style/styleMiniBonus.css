@@ -1,4 +1,4 @@
-.Divtermometer {
+.DivTermometer {
     position: relative;
     height: 15%;
     width: 73%;
@@ -51,6 +51,17 @@
 
 .TermometerMax {
     text-align: right;
+}
+
+.bubble{
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 100%;
+    position: absolute;
+    z-index: -1;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-name: bubble;
 }
 
 .DivCumulPluie {

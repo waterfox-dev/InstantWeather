@@ -86,6 +86,7 @@ function getWeather(insee, day)
 
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
+                DeleteBubbleRain();
                 changeTermometer(tempsMedium);
             }
         }
@@ -117,8 +118,21 @@ for (var i = 1; i < 8; i++) {
 }
 
 function changeTermometer(tempsMedium){
+    let DivTermometer = document.createElement('div');
+    DivTermometer.id = "DivTermometer";
+    DivTermometer.classList.add("DivTermometer");
+
+    document.getElementById("temperature").appendChild(DivTermometer);
+
     let tempsTermometer = ((tempsMedium + 20)*100)/70;
-    console.log(tempsMedium + " " + tempsTermometer);
+    //console.log(tempsMedium + " " + tempsTermometer);
+    let divTemp = document.createElement('div');
+    divTemp.id = "divtermometerInside";
+    divTemp.classList.add("DivtermometerInside");
+
+    document.getElementById("DivTermometer").appendChild(divTemp);
+
+
     document.getElementById("divtermometerInside").style.width = `${tempsTermometer}%`;
 
     if(tempsTermometer < 33){
@@ -132,4 +146,29 @@ function changeTermometer(tempsMedium){
     }
 
     document.getElementById("termometerActual").innerText = tempsMedium + "°C";
-}
+
+    const bubble = 70;
+
+    let BubbleContainer = document.getElementById('DivTermometer');
+
+    for(let i = 0; i < bubble; i++){
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute('class', 'bubble');
+
+        svg.style.left = Math.floor(Math.random() * 90) + "%";
+        svg.style.top = Math.floor(Math.random() * 70) + "%";
+        svg.style.width = Math.floor(Math.random() * 10) + "px";
+        svg.style.height = svg.style.width;
+
+        BubbleContainer.appendChild(svg);
+    }
+}   
+
+
+function DeleteBubbleRain() {
+    console.log(document.getElementById('DivTermometer'));
+    if (document.getElementById('DivTermometer')) {
+        const divToDelete = document.getElementById('DivTermometer');
+        divToDelete.remove();
+    }
+}  

@@ -105,7 +105,7 @@ function updateDegree(newDegree)
         let range = degreeVars.length - (pos)
         bgColorOne = getCssVariable(degreeVars[range-1]);
         bgColorTwo = getCssVariable(degreeVars[range]);
-        console.log(`linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`)
+        //console.log(`linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`)
 
         document.body.style.backgroundImage = `linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`;
     }
