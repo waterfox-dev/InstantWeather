@@ -5,6 +5,7 @@ let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m"]
 let actualCity;
 let actualDayHover = 1;
+let mapReset = 0;
 
 searchBar.addEventListener("input", (event) =>
 {
@@ -90,7 +91,16 @@ function getWeather(insee, day)
                 DeleteBubbleRain();
                 changeTermometer(tempsMedium);
 
-                loadMap(weather['latitude'], weather['longitude'], "map");
+                if(mapReset == 0)
+                {
+                    loadMap(weather['latitude'], weather['longitude'], "map");
+                    mapReset++;
+                }
+                else
+                {
+                    realoadMap(weather['latitude'], weather['longitude'], "map");
+                    mapReset++;
+                }
             }
         }
     )
@@ -184,5 +194,17 @@ function loadMap(lat, lon, div)
         minZoom: 1,
         maxZoom: 20
     }).addTo(map);   
-    
+}
+
+function realoadMap(lat, lon, div)
+{
+    map.remove();   
+    map = L.map(div).setView([lat, lon], 11);
+    var marker = L.marker([lat, lon]).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    {
+        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);    
 }
