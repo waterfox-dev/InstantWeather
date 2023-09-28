@@ -5,7 +5,9 @@
         <title>Instant Weather</title>
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/styleBackground.css">
-        <link rel="stylesheet" href="style/styleMiniBonus.css">
+        <link rel="stylesheet" href="style/styleMiniBonus.css">    
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"> <!--Map API CSS-->
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script> <!--Map API Script-->
     </head>
     <body>
         <header>
@@ -80,6 +82,8 @@
                             <p>Temps : </p>
                             <p id="weatherInfos-Text10"></p>
                         </div>
+
+                        <div class="Map" id="map"></div>
                     </div>
 
                     <!-- Wind slide -->

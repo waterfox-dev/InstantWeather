@@ -1,7 +1,7 @@
 .DivTermometer {
     position: relative;
-    height: 15%;
-    width: 73%;
+    height: 55px;
+    width: 300px;
     background-color: transparent;
     border: 2px solid #dedede;
     border-radius: 10px;
@@ -59,9 +59,7 @@
     border-radius: 100%;
     position: absolute;
     z-index: -1;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    animation-name: bubble;
+    transition: transform 2s ease-in-out;
 }
 
 .DivCumulPluie {
@@ -71,6 +69,13 @@
     border: 2px solid #dedede;
     border-radius: 10px;
 }
+
+.Map
+{
+    width: 80%;
+    height: 70%;
+}
+
 
 /*  -------------- Compass -------------- */
 .circle {

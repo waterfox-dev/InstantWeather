@@ -85,9 +85,12 @@ function getWeather(insee, day)
                 document.getElementById("weatherInfos-Text10").innerText = weather['weather'];
 
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+                
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                 DeleteBubbleRain();
                 changeTermometer(tempsMedium);
+
+                loadMap(weather['latitude'], weather['longitude'], "map");
             }
         }
     )
@@ -164,11 +167,22 @@ function changeTermometer(tempsMedium){
     }
 }   
 
-
 function DeleteBubbleRain() {
-    console.log(document.getElementById('DivTermometer'));
+    //console.log(document.getElementById('DivTermometer'));
     if (document.getElementById('DivTermometer')) {
         const divToDelete = document.getElementById('DivTermometer');
         divToDelete.remove();
     }
 }  
+function loadMap(lat, lon, div)
+{
+    map = L.map(div).setView([lat, lon], 11);
+    var marker = L.marker([lat, lon]).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    {
+        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);   
+    
+}
