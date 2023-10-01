@@ -88,7 +88,7 @@ function getWeather(insee, day)
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
                 
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
-                DeleteBubbleRain();
+                StopBubble();
                 changeTermometer(tempsMedium);
 
                 if(mapReset == 0)
@@ -160,30 +160,43 @@ function changeTermometer(tempsMedium){
 
     document.getElementById("termometerActual").innerText = tempsMedium + "°C";
 
-    const bubble = 70;
-
-    let BubbleContainer = document.getElementById('DivTermometer');
-
-    for(let i = 0; i < bubble; i++){
+    const droplets = 8;
+    for (let r = 0; r < droplets; r++)
+    {
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute('class', 'bubble');
-
-        svg.style.left = Math.floor(Math.random() * 90) + "%";
-        svg.style.top = Math.floor(Math.random() * 70) + "%";
+        svg.setAttribute('preserveAspectRatio', 'xMinYMin');
+        svg.setAttribute('viewBox', '0 0 2 3');
         svg.style.width = Math.floor(Math.random() * 10) + "px";
         svg.style.height = svg.style.width;
-
-        BubbleContainer.appendChild(svg);
-    }
+        svg.style.left = Math.floor(Math.random() * 90) + "%";
+        svg.style.top = Math.floor(Math.random() * 70) + "%";
+        
+        const x = Math.floor(Math.random() * 100);
+        const y = Math.floor(Math.random() * 100);
+        const a = Math.random() + 2;
+        
+        svg.style.setProperty('--x', 500);
+        svg.style.setProperty('--y', 0);
+        svg.style.setProperty('--a', a);
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute('stroke', 'none');
+        path.setAttribute('d', 'M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z');
+        
+        svg.appendChild(path);
+        divTemp.appendChild(svg);
+    }  
 }   
 
-function DeleteBubbleRain() {
-    //console.log(document.getElementById('DivTermometer'));
-    if (document.getElementById('DivTermometer')) {
-        const divToDelete = document.getElementById('DivTermometer');
+function StopBubble() {
+    if (document.getElementById('divtermometerInside')) {
+        const divToDelete = document.getElementById('divtermometerInside');
         divToDelete.remove();
     }
-}  
+  }  
+
+
 function loadMap(lat, lon, div)
 {
     map = L.map(div).setView([lat, lon], 11);
