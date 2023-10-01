@@ -190,8 +190,8 @@ function changeTermometer(tempsMedium){
 }   
 
 function StopBubble() {
-    if (document.getElementById('divtermometerInside')) {
-        const divToDelete = document.getElementById('divtermometerInside');
+    if (document.getElementById('DivTermometer')) {
+        const divToDelete = document.getElementById('DivTermometer');
         divToDelete.remove();
     }
   }  
