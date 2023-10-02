@@ -1,0 +1,288 @@
+.DivTermometer {
+    position: relative;
+    height: 55px;
+    width: 300px;
+    background-color: transparent;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+    margin-left: 10%;
+}
+
+.DivtermometerInside {
+    transition-duration: 600ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    bottom: -1px;
+    /* Place la div interne en bas de la div externe */
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    width: 26%;
+    height: 100%;
+}
+
+.DivtermometerData {
+    width: 95%;
+    height: 5%;
+    margin-top: 15%;
+    margin-bottom: 3%;
+}
+
+.DivtermometerData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.TermometerMin,
+.TermometerActual,
+.TermometerMax {
+    flex: 1;
+}
+
+.TermometerActual {
+    text-align: center;
+    font-weight: bold;
+    font-size: 35px;
+    background-color: #4158D0;
+    background-image: linear-gradient(0deg, #76A9E1 0%, #DAB43E 46%, #BF2929 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.TermometerMax {
+    text-align: right;
+}
+
+.bubble {
+    animation-delay: calc(var(--d) * 1s);
+    animation-duration: calc(var(--a) * 1s);
+    animation-iteration-count: infinite;
+    animation-name: bubble;
+    animation-timing-function: linear;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 100%;
+    display: list-item;
+    z-index: -1;
+    position: absolute;
+  }
+  
+  .bubble path {
+    fill: #a1c6cc;
+    opacity: var(--o);
+    transform: scaleY(calc(var(--s) * 1.5));
+  }
+  
+  @keyframes bubble {
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(145px);
+    }
+  }
+
+.DivCumulPluie {
+    height: 30%;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+}
+
+.Map
+{
+    width: 100%;
+    height: 70%;
+}
+
+/*.Map
+{
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+*/
+
+/*  -------------- Compass -------------- */
+.VitesseVent{
+    position: absolute;
+    top: 75px;
+    left: 30px;
+    font-size: 23px;
+}
+
+.circle {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+.quarter {
+    width: 40%;
+    height: 40%;
+    border: 1px solid #ffffff;
+    position: absolute;
+}
+
+.little-quarter {
+    width: 26%;
+    height: 26%;
+    border: 2px solid #ffffff;
+    position: absolute;
+}
+
+.quarter-top-left {
+    top: 0;
+    left: 0;
+    border-top-left-radius: 150%;
+    border-bottom: 0;
+    border-right: 0;
+}
+
+.quarter-top-right {
+    top: 0;
+    right: 0;
+    border-top-right-radius: 150%;
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.quarter-bottom-left {
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 150%;
+    border-top: 0;
+    border-right: 0;
+}
+
+.quarter-bottom-right {
+    bottom: 0;
+    right: 0;
+    border-bottom-right-radius: 150%;
+    border-top: 0;
+    border-left: 0;
+}
+
+.little-quarter-top-left {
+    top: 24%;
+    left: 24%;
+    border-top-left-radius: 150%;
+    border-bottom: 0;
+    border-right: 0;
+}
+
+.little-quarter-top-right {
+    top: 24%;
+    right: 24%;
+    border-top-right-radius: 150%;
+    border-bottom: 0;
+    border-left: 0;
+}
+
+.little-quarter-bottom-left {
+    bottom: 24%;
+    left: 24%;
+    border-bottom-left-radius: 150%;
+    border-top: 0;
+    border-right: 0;
+}
+
+.little-quarter-bottom-right {
+    bottom: 24%;
+    right: 24%;
+    border-bottom-right-radius: 150%;
+    border-top: 0;
+    border-left: 0;
+}
+
+.middle-top-text,
+.middle-bottom-text,
+.middle-left-text,
+.middle-right-text {
+    padding: 0% 6% 0% 6%;
+}
+
+.middle-top-text {
+    position: absolute;
+    top: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.middle-bottom-text {
+    position: absolute;
+    bottom: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.middle-left-text {
+    position: absolute;
+    top: 50%;
+    left: -14%;
+    transform: translateY(-50%);
+}
+
+.middle-right-text {
+    position: absolute;
+    top: 50%;
+    right: -14%;
+    transform: translateY(-50%);
+}
+
+.Arrow {
+    transition-duration: 1000ms;
+    transition-timing-function: ease;
+    position: relative;
+    height: 100%;
+}
+
+.arrow-up {
+    width: 0;
+    height: 15%;
+    border-left: 1vw solid transparent;
+    border-right: 1vw solid transparent;
+    border-bottom: 6vw solid #000;
+}
+
+.arrow-down {
+    -webkit-transform: rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 1vw solid transparent;
+    border-right: 1vw solid transparent;
+    border-bottom: 6vw solid #F3F3F3;
+}
+
+
+.triangle {
+    stroke: white;
+    stroke-width: 3;
+    fill: #2c0b8e;
+
+    @keyframes mymove {
+        0% {
+            opacity: 0
+        }
+
+        50% {
+            opacity: 1
+        }
+
+        100% {
+            opacity: 0
+        }
+    }
+}
+
+/*  -------------- END Compass -------------- */

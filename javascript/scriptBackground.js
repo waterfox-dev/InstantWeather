@@ -105,11 +105,58 @@ function updateDegree(newDegree)
         let range = degreeVars.length - (pos)
         bgColorOne = getCssVariable(degreeVars[range-1]);
         bgColorTwo = getCssVariable(degreeVars[range]);
-        console.log(`linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`)
+        //console.log(`linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`)
 
         document.body.style.backgroundImage = `linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`;
     }
 }
+
+function rain()
+{
+    document.body.style.backgroundColor = "#6c78a9";
+
+    const droplets = 200;
+
+    let rainContainer = document.createElement('div');
+    rainContainer.id = 'RainBackground';
+    
+    for (let r = 0; r < droplets; r++)
+    {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute('class', 'rain__drop');
+        svg.setAttribute('preserveAspectRatio', 'xMinYMin');
+        svg.setAttribute('viewBox', '0 0 3 20');
+        
+        const x = Math.floor(Math.random() * 100);
+        const y = Math.floor(Math.random() * 100);
+        const o = Math.random();
+        const a = Math.random() + 0.5;
+        const d = (Math.random() * 2) - 1;
+        const s = Math.random();
+        
+        svg.style.setProperty('--x', x);
+        svg.style.setProperty('--y', y);
+        svg.style.setProperty('--o', o);
+        svg.style.setProperty('--a', a);
+        svg.style.setProperty('--d', d);
+        svg.style.setProperty('--s', s);
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute('stroke', 'none');
+        path.setAttribute('d', 'M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z');
+        
+        svg.appendChild(path);
+        rainContainer.appendChild(svg);
+        document.body.appendChild(rainContainer);
+    }  
+}
+
+  function StopRain() {
+    if (document.getElementById('RainBackground')) {
+        const divToDelete = document.getElementById('RainBackground');
+        divToDelete.remove();
+    }
+  }  
 
 /**
  * Init some features like slider value
@@ -118,6 +165,8 @@ function init()
 {
     udpateHour(currentHour);
     updateDegree(currentDegree);
+    //Rain();
+    //StopRain();
 }
 
 //First Automation

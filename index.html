@@ -2,46 +2,29 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Instant Weather</title>
+        <title>☁️ Instant Weather ☀️</title>
         <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/styleBackground.css">
+        <link rel="stylesheet" href="style/styleMiniBonus.css">    
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"> <!--Map API CSS-->
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script> <!--Map API Script-->
     </head>
     <body>
         <header>
-            <h1 class="FirstHeader" id="firstHeader">Instant Weather</h1>
+            <h1 class="FirstHeader" id="firstHeader">☁️ Instant Weather ☀️</h1>
         </header>
         <div class="CenterMeteo">
             <input id="searchBar" class="SearchBar" placeholder="Entrer un code postal">
             <div id="divButtonCitySearch" class="SearchCity" ></div>
             <div class="DivFlex">
-                <!-- <div class="LeftWeather">
-                    <div class="StarContainer" id="starContainer"></div>
-                    <main>
-                        <form class="DemonstrationForm">
-                            <p>Celsius Degree : </p>
-                            <input type="range" step="1" min="-20" max="50" class="DemonstrationSlider" id="tempSlider">
-                            <p>Hour : </p>
-                            <input type="range" step="1" min="0" max="23" class="DemonstrationSlider" id="hourSlider">
-                        </form>
-                        <div class="DemonstrationResume">
-                            <div class="DemonstrationLine">
-                                <p>Degree : </p>
-                                <p id="tempLine"></p>
-                            </div>
-                            <div class="DemonstrationLine">
-                                <p>Hour : </p>
-                                <p id="hourLine"></p>
-                            </div>
-                        </div>
-                    </main>
-                </div> -->
-                <div class="dayBar">
-                    <button id="day1"></button>
-                    <button id="day2"></button>
-                    <button id="day3"></button>
-                    <button id="day4"></button>
-                    <button id="day5"></button>
-                    <button id="day6"></button>
-                    <button id="day7"></button>
+                <div id="dayBar" class="dayBar">
+                    <button id="day1" class="dayButton dayHover"></button>
+                    <button id="day2" class="dayButton"></button>
+                    <button id="day3" class="dayButton"></button>
+                    <button id="day4" class="dayButton"></button>
+                    <button id="day5" class="dayButton"></button>
+                    <button id="day6" class="dayButton"></button>
+                    <button id="day7" class="dayButton"></button>
                 </div>
 
                 <div id="weatherInfos" class="WeatherInfos">
@@ -55,6 +38,12 @@
                         <div id="weatherInfos-TempMax" class="WeatherInfos-TempMax WeatherInfosDiv">
                             <p>Température maximale : </p>
                             <p id="weatherInfos-Text2"></p>
+                        </div>
+                        
+                        <div id="divtermometerData" class="DivtermometerData">
+                            <p class="TermometerMin">-20°C</p>
+                            <p id="termometerActual" class="TermometerActual"></p>
+                            <p class="TermometerMax">50°C</p>
                         </div>
                     </div>
 
@@ -74,6 +63,7 @@
                             <p>Nombre heure ensoleillement : </p>
                             <p id="weatherInfos-Text5"></p>
                         </div>
+                        <div id="divCumulPluie" class="DivCumulPluie"></div>
                     </div>
 
                     <!-- Position slide -->
@@ -87,6 +77,13 @@
                             <p>Longitude : </p>
                             <p id="weatherInfos-Text7"></p>
                         </div>
+
+                        <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
+                            <p>Temps : </p>
+                            <p id="weatherInfos-Text10"></p>
+                        </div>
+
+                        <div class="Map" id="map"></div>
                     </div>
 
                     <!-- Wind slide -->
@@ -99,10 +96,35 @@
                             <p>Direction du vent <span  class="details">(à 10m)</span> : </p>
                             <p id="weatherInfos-Text9"></p>
                         </div>
-                    </div>
-                    <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
-                        <p>Temps : </p>
-                        <p id="weatherInfos-Text10"></p>
+                        <div class="circle">
+                            <div class="quarter quarter-top-left"></div>
+                            <div class="quarter quarter-top-right"></div>
+                            <div class="quarter quarter-bottom-left"></div>
+                            <div class="quarter quarter-bottom-right"></div>
+                            <div class="little-quarter little-quarter-top-left"></div>
+                            <div class="little-quarter little-quarter-top-right"></div>
+                            <div class="little-quarter little-quarter-bottom-left"></div>
+                            <div class="little-quarter little-quarter-bottom-right"></div>
+                            <div id="arrow" class="Arrow" height="150" width="150" >
+                                <p class="VitesseVent" id="weatherInfos-Text8Arrow"></p>
+                                <svg>
+                                    <polygon points="75,20 45,110 105,110" class="triangle" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                            </div>
+                            <div class="middle-top-text">
+                            <p>N</p>
+                            </div>
+                            <div class="middle-bottom-text">
+                            <p>S</p>
+                            </div>
+                            <div class="middle-left-text">
+                            <p>W</p>
+                            </div>
+                            <div class="middle-right-text">
+                            <p>E</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="RightWeather" id="test">
