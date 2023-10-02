@@ -84,8 +84,6 @@ function getWeather(insee, day)
                 {
                     document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
                 }
-                document.getElementById("weatherInfos-Text8Arrow").innerText = weather['wind10m'] + " km/h";
-
 
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
 
