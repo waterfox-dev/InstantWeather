@@ -211,7 +211,38 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
-  transform: translateY(-10px);
-  transition: 0.5s;
+button:hover:after {
+  width: 100%;
+}
+
+.dayButton:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #2c0b8e;
+}
+
+.dayHover{
+  background: #2c0b8e;
+  color: #fff;
+}
+
+/* When the screen is smaller than 700px wide */ 
+@media screen and (max-width: 1200px) {
+  body{
+    font-size: 1.8vw !important;
+  }
+
+  .details{
+    font-size: 1vw;
+  }
+  
+  .middle-top-text, .middle-bottom-text, .middle-left-text, .middle-right-text {
+    padding: 0% 6% 0% 6% !important;
+  }
 }
