@@ -6,6 +6,7 @@ let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude
 let actualCity;
 let actualDayHover = 1;
 let mapReset = 0;
+let HeightWater = 0;
 
 searchBar.addEventListener("input", (event) =>
 {
@@ -87,6 +88,8 @@ function getWeather(insee, day)
                 document.getElementById("weatherInfos-Text10").innerText = weather['weather'];
 
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+
+                document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
                 
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                 StopBubble();
@@ -204,7 +207,7 @@ function loadMap(lat, lon, div)
     var marker = L.marker([lat, lon]).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     {
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        attribution: `Coordonnées : <b>${lat} ; ${lon}</b>`,
         minZoom: 1,
         maxZoom: 20
     }).addTo(map);   
@@ -217,8 +220,24 @@ function realoadMap(lat, lon, div)
     var marker = L.marker([lat, lon]).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     {
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        attribution: `Coordonnées : <b>${lat} ; ${lon}</b>`,
         minZoom: 1,
         maxZoom: 20
     }).addTo(map);    
 }
+
+/* Water Div*/
+const resizeDiv = document.getElementById('water');
+const displayText = document.getElementById('displayText');
+const currentHeightSpan = document.getElementById('waterNum');
+
+function updateTextAndHeight() {
+    const currentHeight = resizeDiv.clientHeight;
+    currentHeightSpan.textContent = (currentHeight-45) + "mm";
+    requestAnimationFrame(updateTextAndHeight);
+}
+
+// Add an event listener for the "resize" event
+resizeDiv.addEventListener('resize', updateTextAndHeight);
+
+updateTextAndHeight();
