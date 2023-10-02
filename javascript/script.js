@@ -207,7 +207,7 @@ function loadMap(lat, lon, div)
     var marker = L.marker([lat, lon]).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     {
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        attribution: `Coordonnées : <b>${lat} ; ${lon}</b>`,
         minZoom: 1,
         maxZoom: 20
     }).addTo(map);   
@@ -220,7 +220,7 @@ function realoadMap(lat, lon, div)
     var marker = L.marker([lat, lon]).addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
     {
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        attribution: `Coordonnées : <b>${lat} ; ${lon}</b>`,
         minZoom: 1,
         maxZoom: 20
     }).addTo(map);    
