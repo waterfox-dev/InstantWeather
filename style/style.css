@@ -76,14 +76,15 @@ body
 
 .SearchCity button{
   width: 100%;
-  height: 80px;
+  height: 5vw;
   background-color: transparent;
   cursor: pointer;
   color: #ffffff;
   font-size: 3vw;
   border: 2px solid #ffffff;
   border-radius: 10px;
-  margin-bottom: -5px;
+  margin-bottom: 0.2vw;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .SearchCity button:hover{
@@ -99,7 +100,7 @@ body
 }
 
 .SearchBar {
-  margin-top: 3rem;
+  margin-top: 2vw;
   text-align: center;
   width: 80%;
   font-size: 3vw;
@@ -108,6 +109,7 @@ body
   color: white;
   border: 2px solid #ffffff;
   border-radius: 100px;
+  margin-bottom: 0.5vw;
 }
 
 /* -------------- Flex -------------- */
@@ -246,7 +248,7 @@ button:hover:after {
 }
 
 /* When the screen is smaller than 700px wide */ 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
   body{
     font-size: 1.8vw !important;
   }
@@ -258,4 +260,21 @@ button:hover:after {
   .middle-top-text, .middle-bottom-text, .middle-left-text, .middle-right-text {
     padding: 0% 6% 0% 6% !important;
   }
+
+  .FirstHeader {
+    font-size: 4vh;
+  }
+
+  .SearchCity button {
+    font-size: 2vh;
+    height: 4.5vh;
+    margin-bottom: 0.2vh;
+  }
+
+  .SearchBar {
+    font-size: 2vh;
+    margin-top: 2vh;
+    margin-bottom: 0.5vh;
+  }
 }
+
