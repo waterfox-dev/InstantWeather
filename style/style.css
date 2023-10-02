@@ -89,7 +89,7 @@ body
 
 .SearchCity button:hover{
   background-color: #ffffff;
-  color: black;
+  color: #2c0b8e;
 }
 
 .CenterMeteo {
@@ -204,8 +204,8 @@ flex: 1; /* Take up remaining space */
 }
 
 .dayButton {
-  min-width: 130px;
-  height: 40px;
+  width: 10vw;
+  height: 6vw;
   padding: 5px 10px;
   font-weight: bold;
   cursor: pointer;
@@ -220,7 +220,6 @@ flex: 1; /* Take up remaining space */
   overflow: hidden;
   border: 2px solid #2c0b8e;
   color: #2c0b8e;
-}
 button:hover {
   color: #fff;
   cursor: pointer;
@@ -276,5 +275,6 @@ button:hover:after {
     margin-top: 2vh;
     margin-bottom: 0.5vh;
   }
+
 }
 
