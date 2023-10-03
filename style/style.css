@@ -285,5 +285,10 @@ button:hover:after {
     padding: 0;
   }
 
+  .WeatherInfos {
+    display:grid;
+    width: 100%;
+    justify-content: center;
+  }
 }
 
