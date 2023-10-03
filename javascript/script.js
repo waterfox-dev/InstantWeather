@@ -116,7 +116,7 @@ function getWeather(insee, day)
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                 StopBubble();
                 changeTermometer(tempsMedium);
-                updateWeatherSVG(weather['weather'])
+                updateWeatherSVG(weather['weather']); 
 
                 if(mapReset == 0)
                 {
