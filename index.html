@@ -35,12 +35,12 @@
                             <p id="weatherInfos-Text1"></p>
                         </div>
 
-                        <div id="weatherInfos-TempMax" class="WeatherInfos-TempMax WeatherInfosDiv">
+                        <div class="WeatherInfos-TempMax WeatherInfosDiv">
                             <p>Température maximale : </p>
                             <p id="weatherInfos-Text2"></p>
                         </div>
                         
-                        <div id="divtermometerData" class="DivtermometerData">
+                        <div class="DivtermometerData">
                             <p class="TermometerMin">-20°C</p>
                             <p id="termometerActual" class="TermometerActual"></p>
                             <p class="TermometerMax">50°C</p>
@@ -49,42 +49,42 @@
 
                     <!-- Rain slide -->
                     <div id="rain" class="slide">
-                        <div id="weatherInfos-ProbabilitePluie" class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
+                        <div class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
                             <p>Risque de précipitations : </p>
                             <p id="weatherInfos-Text3"></p>
                         </div>
 
-                        <div id="weatherInfos-CumulDeLaPluie" class="WeatherInfos-CumulDeLaPluie WeatherInfosDiv">
+                        <div class="WeatherInfos-CumulDeLaPluie WeatherInfosDiv">
                             <p>Cumul de la pluie sur la journée : </p>
                             <p id="weatherInfos-Text4"></p>
                         </div>
 
-                        <div id="weatherInfos-NombreHeureEnsoleillement" class="WeatherInfos-NombreHeureEnsoleillement WeatherInfosDiv">
+                        <div class="WeatherInfos-NombreHeureEnsoleillement WeatherInfosDiv">
                             <p>Nombre heure ensoleillement : </p>
                             <p id="weatherInfos-Text5"></p>
                         </div>
                         <div class="container" id="container">
                             <div class="glass" id="glass">
                                 <div class="water" id="water">
-                                    <p class="waterNum" id="waterNum">AA</p>
+                                    <p class="waterNum" id="waterNum">0 mm</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Position slide -->
-                    <div id="position" class="slide">
-                        <!-- <div id="weatherInfos-Latitude" class="WeatherInfos-Latitude WeatherInfosDiv">
+                    <div class="slide">
+                        <!--<div class="WeatherInfos-Latitude WeatherInfosDiv">
                             <p>Latitude : </p>
                             <p id="weatherInfos-Text6"></p>
                         </div>
 
-                        <div id="weatherInfos-Longitude" class="WeatherInfos-Longitude WeatherInfosDiv">
+                        <div class="WeatherInfos-Longitude WeatherInfosDiv">
                             <p>Longitude : </p>
                             <p id="weatherInfos-Text7"></p>
                         </div>
 
-                        <div id="weatherInfos-DirectionVent" class="WeatherInfos-DirectionVent WeatherInfosDiv">
+                        <div class="WeatherInfos-DirectionVent WeatherInfosDiv">
                             <p>Temps : </p>
                             
                         </div> -->
@@ -93,8 +93,8 @@
                     </div>
 
                     <!-- Wind slide -->
-                    <div id="wind" class="slide">
-                        <div id="weatherInfos-VitesseVent" class="WeatherInfos-VitesseVent WeatherInfosDiv">
+                    <div class="slide">
+                        <div class="WeatherInfos-VitesseVent WeatherInfosDiv">
                             <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
                             <p id="weatherInfos-Text6"></p>
                         </div>
@@ -128,12 +128,14 @@
                             <p>E</p>
                             </div>
                         </div>
+                        <div><img id="weatherSvg" src="assets/cloudy.svg" width="50" height="50"></div>
+
                     </div>
                 </div>
-                <div class="RightWeather" id="test">
-                </div>
+                <div class="RightWeather" id="test">    </div>
             </div>
         </div>
+    <script src="javascript/weatherDict.js"></script>
     <script src="javascript/script.js"></script>
     <script src="javascript/scriptBackground.js"></script>
     </body>
