@@ -288,4 +288,9 @@ function updateTextAndHeight() {
 // Add an event listener for the "resize" event
 resizeDiv.addEventListener('resize', updateTextAndHeight);
 
+function updateWeatherSVG()
+{
+    
+}
+
 init();
