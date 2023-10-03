@@ -282,7 +282,7 @@ function updateTextAndHeight() {
 
     //console.log(result);
 
-    currentHeightSpan.textContent = result + "mm";
+    currentHeightSpan.textContent = "- " + result + "mm";
     requestAnimationFrame(updateTextAndHeight);
 }
 
