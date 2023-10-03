@@ -3,16 +3,30 @@ let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m"]
-let actualCity;
-let actualDayHover = 1;
-let mapReset = 0;
-let HeightWater = 0;
+let actualCity; //City Choose Hover
+let actualDayHover = 1; //Day Button Hover
+let mapReset = 0;   //Map Status
+
+/* -------------------- EVENT LISTENERS -------------------- */
 
 searchBar.addEventListener("input", (event) =>
 {
-    //console.log(parseInt(searchBar.value));
     getCity(parseInt(searchBar.value));
 });
+
+for(let i = 1; i < 8; i++){
+    document.getElementById(`day${i}`).addEventListener("click", () => {
+        getWeather(actualCity, i-1);
+
+        document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
+        document.getElementById(`day${i}`).classList.add("dayHover");
+        actualDayHover = i;
+    });
+}
+
+// Add an event listener for the "resize" event
+
+/* -------------------- END OF EVENT LISTENERS -------------------- */
 
 
 function getCity(cp)
@@ -110,30 +124,25 @@ function getWeather(insee, day)
     )
 }
 
-for(let i = 1; i < 8; i++){
-    document.getElementById(`day${i}`).addEventListener("click", () => {
-        getWeather(actualCity, i-1);
+function init(){
+    // Get the current date
+    var currentDate = new Date();
 
-        document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
-        document.getElementById(`day${i}`).classList.add("dayHover");
-        actualDayHover = i;
-    });
+    for (var i = 1; i < 8; i++) {
+        var listItem = document.getElementById(`day${i}`);
+
+        // Add the current date and increment it by 1 day
+        var dateString = currentDate.toLocaleDateString();
+        listItem.textContent = dateString;
+
+        // Increment the current date by 1 day for the next iteration
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    updateTextAndHeight();
 }
 
-// Get the current date
-var currentDate = new Date();
-
-for (var i = 1; i < 8; i++) {
-    var listItem = document.getElementById(`day${i}`);
-
-    // Add the current date and increment it by 1 day
-    var dateString = currentDate.toLocaleDateString();
-    listItem.textContent = dateString;
-
-    // Increment the current date by 1 day for the next iteration
-    currentDate.setDate(currentDate.getDate() + 1);
-}
-
+/* -------------------- Termometer Config -------------------- */
 function changeTermometer(tempsMedium){
     let DivTermometer = document.createElement('div');
     DivTermometer.id = "DivTermometer";
@@ -142,14 +151,11 @@ function changeTermometer(tempsMedium){
     document.getElementById("temperature").appendChild(DivTermometer);
 
     let tempsTermometer = ((tempsMedium + 20)*100)/70;
-    //console.log(tempsMedium + " " + tempsTermometer);
     let divTemp = document.createElement('div');
     divTemp.id = "divtermometerInside";
     divTemp.classList.add("DivtermometerInside");
 
     document.getElementById("DivTermometer").appendChild(divTemp);
-
-
     document.getElementById("divtermometerInside").style.width = `${tempsTermometer}%`;
 
     if(tempsTermometer < 33){
@@ -200,7 +206,7 @@ function StopBubble() {
     }
   }  
 
-
+/* -------------------- Map Config -------------------- */
 function loadMap(lat, lon, div)
 {
     map = L.map(div).setView([lat, lon], 11);
@@ -226,13 +232,17 @@ function realoadMap(lat, lon, div)
     }).addTo(map);    
 }
 
-/* Water Div*/
-const resizeDiv = document.getElementById('water');
+/* -------------------- Rain Bucket Config -------------------- */
+let resizeDiv = document.getElementById('water');
 const displayText = document.getElementById('displayText');
 const currentHeightSpan = document.getElementById('waterNum');
 
 function updateTextAndHeight() {
     const currentHeight = resizeDiv.clientHeight;
+    
+    var height = 45.000;
+    height = document.getElementById('water').style.height;
+    console.log(height + " mm")
     currentHeightSpan.textContent = (currentHeight-45) + "mm";
     requestAnimationFrame(updateTextAndHeight);
 }
@@ -240,4 +250,4 @@ function updateTextAndHeight() {
 // Add an event listener for the "resize" event
 resizeDiv.addEventListener('resize', updateTextAndHeight);
 
-updateTextAndHeight();
+init();
