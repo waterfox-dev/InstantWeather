@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let weatherInfos = this.document.getElementById("weatherInfos");
+let searchBar = this.document.getElementById("searchBar");
+let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
+let weatherSvg = this.document.getElementById("weatherSvg");
+let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
+let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "wind10m", "dirwind10m"]
+let actualCity; //City Choose Hover
+let actualDayHover = 1; //Day Button Hover
+let mapReset = 0;   //Map Status
+
+/* -------------------- EVENT LISTENERS -------------------- */
+
+
+searchBar.addEventListener("input", (event) =>
+{
+    getCity(parseInt(searchBar.value));
+});
+
+for(let i = 1; i &lt; 8; i++){
+    document.getElementById(`day${i}`).addEventListener("click", () => {
+        getWeather(actualCity, i-1);
+
+        document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
+        document.getElementById(`day${i}`).classList.add("dayHover");
+        actualDayHover = i;
+    });
+}
+
+/* -------------------- END OF EVENT LISTENERS -------------------- */
+
+/**
+ * @async
+ * Asynchronous function. Get a postal code and fetch all datas concerning its cities
+ * @param {int} cp the postal code 
+ */
+function getCity(cp)
+{
+    //console.log(cp);
+    fetch(`https://geo.api.gouv.fr/communes?codePostal=${cp}`)
+    .then(response => response.json())
+    .then(
+        data =>
+        {
+            while (divButtonCitySearch.hasChildNodes()) {
+                //console.log(divButtonCitySearch.firstChild);
+                divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
+            }
+            for(city in data)
+            {
+                let button = document.createElement("button"); 
+                button.textContent = data[city].nom;
+                button.id = data[city].code;
+                //console.log(button.id);
+              
+                divButtonCitySearch.appendChild(button);
+                button.addEventListener('click', () =>
+                {
+
+
+                    //console.log(button.id);
+                    //console.log(button.textContent);
+                    searchBar.value = button.textContent;
+                    //console.log(button.id);
+                    getWeather(button.id, 0);
+                    actualCity = button.id;
+                    while (divButtonCitySearch.hasChildNodes()) {
+                        //console.log(divButtonCitySearch.firstChild);
+                        divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
+                    }
+                });
+            }
+        })
+    .catch(error =>
+        {
+            divButtonCitySearch.innerHtml = error;
+        }
+    )
+}
+
+/**
+ * @async 
+ * Asynchronous function. Get Weather for a specific day.
+ * @param {int} insee The insee code of the city
+ * @param {int} day The day after today. For example `1` mean tommorow
+ */
+function getWeather(insee, day)
+{
+    //console.log(insee);
+    fetch(`https://api.meteo-concept.com/api/forecast/daily?token=5a53a6c6c06bdf4db59b5848acd3050994fd48fff83f9f7c201cf0f7447a6835&amp;insee=${insee}`)
+    .then(response => response.json())
+    .then(
+        data =>
+        {
+            if('code' in data)
+            {
+                window.alert("L'api meteo concept ne fourni pas de prévisions pour ce lieu");
+                console.log(data['code']);
+                document.getElementById("weatherInfos").style.visibility = 'hidden';
+                document.getElementById("dayBar").style.visibility = 'hidden';
+            }
+            else 
+            {
+                document.getElementById("weatherInfos").style.visibility = 'visible';
+                document.getElementById("dayBar").style.visibility = 'visible';
+                let weather = data.forecast[day];
+
+                for(let i = 1; i &lt; strWeatherKey.length; i++)
+                {
+                    document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
+                }
+
+                document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+
+                document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
+                
+                let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
+                StopBubble();
+                changeTermometer(tempsMedium);
+                updateWeatherSVG(weather['weather'])
+
+                if(mapReset == 0)
+                {
+                    loadMap(weather['latitude'], weather['longitude'], "map");
+                    mapReset++;
+                }
+                else
+                {
+                    realoadMap(weather['latitude'], weather['longitude'], "map");
+                    mapReset++;
+                }
+            }
+        }
+    )
+}
+
+/**
+ * Initiliasition of the script
+ */
+function init(){
+    // Get the current date
+    var currentDate = new Date();
+
+    for (var i = 1; i &lt; 8; i++) {
+        var listItem = document.getElementById(`day${i}`);
+
+        // Add the current date and increment it by 1 day
+        var dateString = currentDate.toLocaleDateString();
+        listItem.textContent = dateString;
+
+        // Increment the current date by 1 day for the next iteration
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    updateTextAndHeight();
+}
+
+/* -------------------- Termometer Config -------------------- */
+/**
+ * Update Termometer style depending on medium temperature
+ * @param {int} tempsMedium The medium temperature
+ */
+function changeTermometer(tempsMedium){
+    let DivTermometer = document.createElement('div');
+    DivTermometer.id = "DivTermometer";
+    DivTermometer.classList.add("DivTermometer");
+
+    document.getElementById("temperature").appendChild(DivTermometer);
+
+    let tempsTermometer = ((tempsMedium + 20)*100)/70;
+    let divTemp = document.createElement('div');
+    divTemp.id = "divtermometerInside";
+    divTemp.classList.add("DivtermometerInside");
+
+    document.getElementById("DivTermometer").appendChild(divTemp);
+    document.getElementById("divtermometerInside").style.width = `${tempsTermometer}%`;
+
+    if(tempsTermometer &lt; 33){
+        document.getElementById("divtermometerInside").style.backgroundColor = "blue";
+    }
+    else if(tempsTermometer >= 33 &amp;&amp; tempsTermometer &lt; 66){
+        document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 100%)";
+    }
+    else if(tempsTermometer >= 66){
+        document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 50%, #fa6464 100%)";
+    }
+
+    document.getElementById("termometerActual").innerText = tempsMedium + "°C";
+
+    const droplets = 8;
+    for (let r = 0; r &lt; droplets; r++)
+    {
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute('class', 'bubble');
+        svg.setAttribute('preserveAspectRatio', 'xMinYMin');
+        svg.setAttribute('viewBox', '0 0 2 3');
+        svg.style.width = Math.floor(Math.random() * 10) + "px";
+        svg.style.height = svg.style.width;
+        svg.style.left = Math.floor(Math.random() * 90) + "%";
+        svg.style.top = Math.floor(Math.random() * 70) + "%";
+        
+        const x = Math.floor(Math.random() * 100);
+        const y = Math.floor(Math.random() * 100);
+        const a = Math.random() + 2;
+        
+        svg.style.setProperty('--x', 500);
+        svg.style.setProperty('--y', 0);
+        svg.style.setProperty('--a', a);
+        
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute('stroke', 'none');
+        path.setAttribute('d', 'M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z');
+        
+        svg.appendChild(path);
+        divTemp.appendChild(svg);
+    }  
+}   
+
+/**
+ * Stop the emission of bubble
+ */
+function StopBubble() {
+    if (document.getElementById('DivTermometer')) {
+        const divToDelete = document.getElementById('DivTermometer');
+        divToDelete.remove();
+    }
+  }  
+
+/* -------------------- Map Config -------------------- */
+
+/**
+ * Create a `leaflet` map depending on position.
+ * @param {float} lat trigonometric position of latitude 
+ * @param {float} lon trigonometric position of longitude 
+ * @param {String} div id of the map div
+ */
+function loadMap(lat, lon, div)
+{
+    map = L.map(div).setView([lat, lon], 11);
+    var marker = L.marker([lat, lon]).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    {
+        attribution: `Coordonnées : &lt;b>${lat} ; ${lon}&lt;/b>`,
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);   
+}
+
+/**
+ * Reload the map depending on new position
+ * @param {float} lat trigonometric position of latitude 
+ * @param {float} lon trigonometric position of longitude 
+ * @param {String} div id of the map div
+ */
+function realoadMap(lat, lon, div)
+{
+    map.remove();   
+    map = L.map(div).setView([lat, lon], 11);
+    var marker = L.marker([lat, lon]).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+    {
+        attribution: `Coordonnées : &lt;b>${lat} ; ${lon}&lt;/b>`,
+        minZoom: 1,
+        maxZoom: 20
+    }).addTo(map);    
+}
+
+/* -------------------- Rain Bucket Config -------------------- */
+
+let resizeDiv = document.getElementById('water');
+const displayText = document.getElementById('displayText');
+const currentHeightSpan = document.getElementById('waterNum');
+
+/**
+ * Update Bucket style
+ */
+function updateTextAndHeight() {
+    const currentHeight = resizeDiv.clientHeight;
+
+    var height = document.getElementById('water').style.height; // e.g., "47.5px"
+    var numericHeight = parseFloat(height); // Parse the float value from the string
+    var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
+
+    //console.log(result);
+
+    currentHeightSpan.textContent = result + "mm";
+    requestAnimationFrame(updateTextAndHeight);
+}
+
+
+// Add an event listener for the "resize" event
+resizeDiv.addEventListener('resize', updateTextAndHeight);
+
+function updateWeatherSVG(state)
+{
+    weatherSvg.src = "assets/" + weatherIconDay[`${state}`];
+}
+
+init();</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#StopBubble">StopBubble</a></li><li><a href="global.html#changeTermometer">changeTermometer</a></li><li><a href="global.html#getCity">getCity</a></li><li><a href="global.html#getWeather">getWeather</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadMap">loadMap</a></li><li><a href="global.html#realoadMap">realoadMap</a></li><li><a href="global.html#updateTextAndHeight">updateTextAndHeight</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Oct 03 2023 10:37:24 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
