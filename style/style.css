@@ -205,8 +205,7 @@ flex: 1; /* Take up remaining space */
 
 .dayButton {
   width: 10vw;
-  height: 6vw;
-  padding: 5px 10px;
+  height: 3vw;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -220,6 +219,9 @@ flex: 1; /* Take up remaining space */
   overflow: hidden;
   border: 2px solid #2c0b8e;
   color: #2c0b8e;
+  font-size: 1vw;
+}
+
 button:hover {
   color: #fff;
   cursor: pointer;
@@ -274,6 +276,13 @@ button:hover:after {
     font-size: 2vh;
     margin-top: 2vh;
     margin-bottom: 0.5vh;
+  }
+
+  .dayButton {
+    width: 12vw;
+    height: 5vw;
+    font-size: 1.5vw;
+    padding: 0;
   }
 
 }
