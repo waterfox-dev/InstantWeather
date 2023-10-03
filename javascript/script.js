@@ -1,6 +1,7 @@
 let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
+let weatherSvg = this.document.getElementById("weatherSvg");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "wind10m", "dirwind10m"]
 let actualCity; //City Choose Hover
@@ -115,6 +116,7 @@ function getWeather(insee, day)
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                 StopBubble();
                 changeTermometer(tempsMedium);
+                updateWeatherSVG(weather['weather'])
 
                 if(mapReset == 0)
                 {
@@ -288,9 +290,9 @@ function updateTextAndHeight() {
 // Add an event listener for the "resize" event
 resizeDiv.addEventListener('resize', updateTextAndHeight);
 
-function updateWeatherSVG()
+function updateWeatherSVG(state)
 {
-    
+    weatherSvg.src = "assets/" + weatherIconDay[`${state}`];
 }
 
 init();
