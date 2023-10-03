@@ -25,8 +25,6 @@ for(let i = 1; i < 8; i++){
     });
 }
 
-// Add an event listener for the "resize" event
-
 /* -------------------- END OF EVENT LISTENERS -------------------- */
 
 /**
@@ -274,12 +272,16 @@ const currentHeightSpan = document.getElementById('waterNum');
 function updateTextAndHeight() {
     const currentHeight = resizeDiv.clientHeight;
     
-    var height = 45.000;
-    height = document.getElementById('water').style.height;
-    console.log(height + " mm")
-    currentHeightSpan.textContent = (currentHeight-45) + "mm";
+    var height = document.getElementById('water').style.height; // e.g., "47.5px"
+    var numericHeight = parseFloat(height); // Parse the float value from the string
+    var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
+    
+    //console.log(result);
+    
+    currentHeightSpan.textContent = result + "mm";
     requestAnimationFrame(updateTextAndHeight);
 }
+
 
 // Add an event listener for the "resize" event
 resizeDiv.addEventListener('resize', updateTextAndHeight);
