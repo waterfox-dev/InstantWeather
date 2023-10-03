@@ -2,7 +2,7 @@ let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
-let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude", "longitude", "wind10m", "dirwind10m"]
+let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "wind10m", "dirwind10m"]
 let actualCity; //City Choose Hover
 let actualDayHover = 1; //Day Button Hover
 let mapReset = 0;   //Map Status
@@ -103,12 +103,10 @@ function getWeather(insee, day)
                 document.getElementById("dayBar").style.visibility = 'visible';
                 let weather = data.forecast[day];
 
-                for(let i = 1; i < 10; i++)
+                for(let i = 1; i < strWeatherKey.length; i++)
                 {
                     document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
                 }
-                document.getElementById("weatherInfos-Text8Arrow").innerText = weather['wind10m'] + " km/h";
-                document.getElementById("weatherInfos-Text10").innerText = weather['weather'];
 
                 document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
 
