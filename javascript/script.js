@@ -6,7 +6,9 @@ let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "latitude
 let actualCity; //City Choose Hover
 let actualDayHover = 1; //Day Button Hover
 let mapReset = 0;   //Map Status
-
+let resizeDiv = document.getElementById('water');
+const displayText = document.getElementById('displayText');
+const currentHeightSpan = document.getElementById('waterNum');
 /* -------------------- EVENT LISTENERS -------------------- */
 
 
@@ -265,10 +267,10 @@ function realoadMap(lat, lon, div)
 }
 
 /* -------------------- Rain Bucket Config -------------------- */
-let resizeDiv = document.getElementById('water');
-const displayText = document.getElementById('displayText');
-const currentHeightSpan = document.getElementById('waterNum');
 
+/**
+ * Update style for the rain bucket
+ */
 function updateTextAndHeight() {
     const currentHeight = resizeDiv.clientHeight;
     
