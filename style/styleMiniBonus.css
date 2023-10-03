@@ -1,11 +1,11 @@
 .DivTermometer {
     position: relative;
-    height: 55px;
-    width: 300px;
+    height: 4.5vw;
+    width: 18vw;
     background-color: transparent;
     border: 2px solid #dedede;
     border-radius: 10px;
-    margin-left: 10%;
+    margin-left: auto;
 }
 
 .DivtermometerInside {
@@ -79,7 +79,7 @@
     }
     100% {
       opacity: 0;
-      transform: translateX(145px);
+      transform: translateX(9vw);
     }
   }
 
