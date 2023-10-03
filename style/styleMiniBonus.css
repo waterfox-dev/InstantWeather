@@ -42,7 +42,7 @@
 .TermometerActual {
     text-align: center;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 2vw;
     background-color: #4158D0;
     background-image: linear-gradient(0deg, #76A9E1 0%, #DAB43E 46%, #BF2929 100%);
     -webkit-background-clip: text;
@@ -345,3 +345,15 @@
 }
 
 /*  -------------- END Compass -------------- */
+
+
+@media screen and (max-width: 800px) {
+    .TermometerActual {
+        font-size: 4vw;
+    }
+    
+    .DivTermometer {
+        height: 4.5vw;
+        width: 38vw;
+    }
+}
