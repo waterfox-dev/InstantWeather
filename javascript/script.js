@@ -9,6 +9,7 @@ let mapReset = 0;   //Map Status
 
 /* -------------------- EVENT LISTENERS -------------------- */
 
+
 searchBar.addEventListener("input", (event) =>
 {
     getCity(parseInt(searchBar.value));
@@ -28,7 +29,11 @@ for(let i = 1; i < 8; i++){
 
 /* -------------------- END OF EVENT LISTENERS -------------------- */
 
-
+/**
+ * @async
+ * Asynchronous function. Get a postal code and fetch all datas concerning its cities
+ * @param {int} cp the postal code 
+ */
 function getCity(cp)
 {
     //console.log(cp);
@@ -73,6 +78,12 @@ function getCity(cp)
     )
 }
 
+/**
+ * @async 
+ * Asynchronous function. Get Weather for a specific day.
+ * @param {int} insee The insee code of the city
+ * @param {int} day The day after today. For example `1` mean tommorow
+ */
 function getWeather(insee, day)
 {
     //console.log(insee);
@@ -124,6 +135,9 @@ function getWeather(insee, day)
     )
 }
 
+/**
+ * Initiliasition of the script
+ */
 function init(){
     // Get the current date
     var currentDate = new Date();
@@ -143,6 +157,10 @@ function init(){
 }
 
 /* -------------------- Termometer Config -------------------- */
+/**
+ * Update Termometer style depending on medium temperature
+ * @param {int} tempsMedium The medium temperature
+ */
 function changeTermometer(tempsMedium){
     let DivTermometer = document.createElement('div');
     DivTermometer.id = "DivTermometer";
@@ -199,6 +217,9 @@ function changeTermometer(tempsMedium){
     }  
 }   
 
+/**
+ * Stop the emission of bubble
+ */
 function StopBubble() {
     if (document.getElementById('DivTermometer')) {
         const divToDelete = document.getElementById('DivTermometer');
@@ -207,6 +228,13 @@ function StopBubble() {
   }  
 
 /* -------------------- Map Config -------------------- */
+
+/**
+ * Create a `leaflet` map depending on position.
+ * @param {float} lat trigonometric position of latitude 
+ * @param {float} lon trigonometric position of longitude 
+ * @param {String} div id of the map div
+ */
 function loadMap(lat, lon, div)
 {
     map = L.map(div).setView([lat, lon], 11);
@@ -219,6 +247,12 @@ function loadMap(lat, lon, div)
     }).addTo(map);   
 }
 
+/**
+ * Reload the map depending on new position
+ * @param {float} lat trigonometric position of latitude 
+ * @param {float} lon trigonometric position of longitude 
+ * @param {String} div id of the map div
+ */
 function realoadMap(lat, lon, div)
 {
     map.remove();   
