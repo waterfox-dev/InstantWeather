@@ -355,4 +355,10 @@
         height: 4.5vw;
         width: 38vw;
     }
+
+    .waterNum{
+        position: absolute;
+        font-size: 1.5vw;
+        margin-left: 32vW;
+    }
 }
