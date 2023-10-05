@@ -51,3 +51,45 @@
   }
 }
 /* -------------- END Background Rain-------------- */
+
+
+
+.snow {
+  -webkit-animation-delay: calc(var(--d) * 3s);
+          animation-delay: calc(var(--d) * 3s);
+  -webkit-animation-duration: calc(var(--a) * 3s);
+          animation-duration: calc(var(--a) * 3s);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: dropsnow;
+          animation-name: dropsnow;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  background-color: white;
+  border-radius: 100%;
+  left: calc(var(--x) * 1%);
+  position: absolute;
+  top: calc((var(--y) + 50) * -1px);
+}
+.snow path {
+  opacity: var(--o);
+  transform: scaleY(calc(var(--s) * 1.5));
+}
+@-webkit-keyframes dropsnow {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+@keyframes dropsnow {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
