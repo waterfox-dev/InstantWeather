@@ -322,5 +322,13 @@ button:hover:after {
   .slide:hover{
     animation:none;
   }
+
+  .WeatherInfosDiv p:nth-child(1) {
+    width: 65%;
+    margin-right: auto; /* Push to the left */
+    line-height: 2.2vw;
+    margin: 0.4vw;
+  }
+
 }
 
