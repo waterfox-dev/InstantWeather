@@ -134,9 +134,9 @@ body
 }
 
 .WeatherInfosDiv p:nth-child(1) {
-  width: 60%;
+  width: 65%;
   margin-right: auto; /* Push to the left */
-  line-height: 1.5vw;
+  line-height: 1.2vw;
   margin: 0.4vw;
 }
 
