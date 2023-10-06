@@ -121,17 +121,17 @@ function getWeather(insee, day)
 
                 if(parseInt(weather['weather']) >= 10 && parseInt(weather['weather']) <= 78)
                 {
-                    console.log("A");
                     rain();
                 }
 
-                if(220 >= parseInt(weather['weather']) >= 222)
+                else if(220 >= parseInt(weather['weather']) >= 222)
                 {
                     snow();
                 }
                 else
                 {
                     StopSnow();
+                    StopRain();
                 }
 
                 if(mapReset == 0)
