@@ -331,7 +331,7 @@
     fill: #2c0b8e;
 }
   
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
   .circle p{
     font-size: 5vw;
   }
@@ -339,7 +339,7 @@
   .circle {
     height: 25vw;
     width: 25vw;
-    margin-top: 13%;
+    margin-top: 10px;
   }
 }
 
