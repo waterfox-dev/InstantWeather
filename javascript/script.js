@@ -106,6 +106,9 @@ function getWeather(insee, day)
             }
             else 
             {
+                document.getElementById("content").style.visibility = "visible";
+                document.getElementById("header").style.height = "auto";
+                document.getElementById("divButtonCitySearch").style.top = "76px";
 
                 globInsee = insee;
                 udpateDate(day)
@@ -194,6 +197,11 @@ function getWeather(insee, day)
  * Initiliasition of the script
  */
 function init(){
+
+    document.getElementById("content").style.visibility = "hidden";
+    document.getElementById("header").style.height = "100vh";
+    document.getElementById("divButtonCitySearch").style.top = "500px";
+
     udpateDate(0);
     updateTextAndHeight();
 }

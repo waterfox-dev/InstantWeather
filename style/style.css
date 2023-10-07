@@ -38,7 +38,8 @@
 }
 
 header{
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 body
@@ -78,6 +79,7 @@ body
   height: 45px;
   width: 100%;
   border-radius: 10px;
+  background-color: #D9D9D9;
   border: 1px solid #2c0b8e;
   background-color: white;
   z-index: 10000;
@@ -314,6 +316,8 @@ main
     margin-top: 2vh;
     margin-bottom: 0.5vh;
     padding: 0.7vh;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
   }
 
 
