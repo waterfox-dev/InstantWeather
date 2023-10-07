@@ -9,6 +9,6 @@ Grâce à nos différents thèmes, variant en fonction de la météo ainsi que d
 ![Thème nuit](assets/screens/night.png)
 <p text-align='center'>Une douce nuit sur InstantWeather</p>
 
-![Thème neige](assets/screens/night.png)
+![Thème neige](assets/screens/snow.png)
 <p text-align='center'>Un hiver froid...</p>
 
