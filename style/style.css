@@ -37,15 +37,21 @@
    }
 }
 
+html
+{
+    height: 100vh;
+}
 header{
   display: flex;
   align-items: center;
 }
 
+
 body
 {
     background-color: #C6D2FF;
     font-family: 'Cambay', sans-serif;
+    height: 100vh;
 }
 
 .SearchBar
@@ -101,7 +107,7 @@ main
     margin-left: 7%;
     margin-right: 7%;   
     border-radius: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 0%;
 }
 
 .WeatherCity
