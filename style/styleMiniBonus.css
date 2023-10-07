@@ -94,7 +94,9 @@
     border-radius: 10px;
     margin-bottom: 0%;
     margin-top: 0%;
-    
+    display: inline-block;
+    text-align: left;
+    margin-right: 10%;
 }
   
 .glass {
@@ -153,7 +155,7 @@
     position: absolute;
     font-size: 20px;
     margin-bottom: 10px;
-    margin-left: 125px;
+    margin-left: -100px;
     width: 180px;
 }
 

@@ -128,6 +128,28 @@ function getWeather(insee, day)
                     StopBubble();
                     // changeTermometer(tempsMedium);
                     updateWeatherSVG(weather['weather']); 
+
+
+                    const elements = document.querySelectorAll('.leaflet-touch .leaflet-bar a');
+
+                    if(window.innerWidth > 850){
+                        console.log(element.style.width)
+                        elements.forEach(element => {
+                            console.log(element.style.width)
+                            element.style.width = '2.8vw !important';
+                            console.log(element.style.width)
+                            element.style.height = '2.8vw !important';
+                            element.style.lineHeight = '2.8vw !important';
+                        });
+                    }
+                    else{
+                        console.log("bbb")
+                        elements.forEach(element => {
+                            element.style.width = '4.8vw !important';
+                            element.style.height = '4.8vw !important';
+                            element.style.lineHeight = '4.9vw !important';
+                        });
+                    }
     
                     StopSnow();
                     StopRain();
@@ -173,10 +195,7 @@ function getWeather(insee, day)
  * Initiliasition of the script
  */
 function init(){
-    // Get the current date
     udpateDate(0);
-
-   
     updateTextAndHeight();
 }
 
@@ -316,15 +335,9 @@ function updateTextAndHeight() {
 
     //console.log(result);
 
-    currentHeightSpan.textContent = "- " + result + "mm";
+    currentHeightSpan.textContent = result + "mm -";
     requestAnimationFrame(updateTextAndHeight);
 }
-
-// Add an event listener for the "resize" event
-
-window.addEventListener('resize', function() {
-    // Your code to handle the resize event goes here
-  });
 
 function updateWeatherSVG(state)
 {
