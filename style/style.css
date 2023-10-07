@@ -135,6 +135,10 @@ main
   display: flex;
 }
 
+.WaterDivLeft{
+  margin-top: 3%;
+}
+
 .TempDiv
 {
     text-align: center;
@@ -420,9 +424,9 @@ main
   }
 
   .WaterDiv{
-    padding-left: 0%;
+    padding-left: 3%;
     margin-left: 5%;
-    width: 90%;
+    width: 86%;
     height: auto;
   }
 

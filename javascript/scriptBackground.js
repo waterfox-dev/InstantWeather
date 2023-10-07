@@ -109,8 +109,6 @@ function updateDegree(newDegree)
 
 function rain()
 {
-    document.body.style.backgroundColor = "#6c78a9";
-
     const droplets = 200;
 
     let SnowContainer = document.createElement('div');
