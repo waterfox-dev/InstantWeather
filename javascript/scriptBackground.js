@@ -55,13 +55,10 @@ function createRandomStars(nb)
             star.style.width = `${animDuration+10}px`;
             star.style.height = `${animDuration+10}px`;
             star.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-            
-            this.document.getElementById('firstHeader').innerText = "Cause you're like every stars in this sky : Unique."
 
         }
         else
         {
-            this.document.getElementById('firstHeader').innerText = "Instant Weather"
             star.style.animation = `blink ${animDuration}s infinite alternate`;
             star.style.width = `${animDuration}px`;
             star.style.height = `${animDuration}px`;
