@@ -120,7 +120,7 @@ function getWeather(insee, day)
     
                     document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
     
-                    // document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
+                    document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
                     
                     let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                     document.getElementById("medTemp").innerText = `${tempsMedium} °C`;
@@ -177,7 +177,7 @@ function init(){
     udpateDate(0);
 
    
-    // updateTextAndHeight();
+    updateTextAndHeight();
 }
 
 /* -------------------- Termometer Config -------------------- */
@@ -307,18 +307,18 @@ const currentHeightSpan = document.getElementById('waterNum');
 /**
  * Update Bucket style
  */
-// function updateTextAndHeight() {
+function updateTextAndHeight() {
+    const currentHeight = resizeDiv.clientHeight;
 
-//     var height = document.getElementById('water').style.height; // e.g., "47.5px"
-//     var numericHeight = parseFloat(height); // Parse the float value from the string
-//     var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
+    var height = document.getElementById('water').style.height; // e.g., "47.5px"
+    var numericHeight = parseFloat(height); // Parse the float value from the string
+    var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
 
-//     //console.log(result);
+    //console.log(result);
 
-//     currentHeightSpan.textContent = "- " + result + "mm";
-//     requestAnimationFrame(updateTextAndHeight);
-// }
-
+    currentHeightSpan.textContent = "- " + result + "mm";
+    requestAnimationFrame(updateTextAndHeight);
+}
 
 // Add an event listener for the "resize" event
 

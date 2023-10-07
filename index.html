@@ -39,17 +39,31 @@
                 </div>
                 <div class="StackPanel">
                     <div class="WaterDiv">
-                        <p class="WaterDivTitle">Concernant la pluie</p>
-                        <div class="InfoDiv"> 
-                            <p>Risque de précipitations :</p> <p id = "weatherInfos-Text3"></p></p>
+                        <div class="WaterDivLeft">
+                            <p class="WaterDivTitle">Concernant la pluie</p>
+                            <div class="InfoDiv">
+                                <p>Risque de précipitations :</p>
+                                <p class="BigInfo"id="weatherInfos-Text3"></p>
+                            </div>
+                            <div class="InfoDiv">
+                                <p>Cumul de la pluie sur la journée :</p>
+                                <p  class="BigInfo" id="weatherInfos-Text4"></p>
+                            </div>
+                            <div class="InfoDiv">
+                                <p>Nombre d'heure d'ensoleillement :</p>
+                                <p  class="BigInfo" id="weatherInfos-Text5"></p>
+                            </div>
                         </div>
-                        <div class="InfoDiv"> 
-                            <p>Cumul de la pluie sur la journée :</p> <p id = "weatherInfos-Text4"></p></p>
+                        <div class="WaterDivRight">
+                            <div class="container" id="container">
+                                <div class="glass" id="glass">
+                                    <div class="water" id="water">
+                                        <p class="waterNum" id="waterNum">- 0 mm</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="InfoDiv"> 
-                            <p>Nombre d'heure d'ensolleiment : </p> <p id = "weatherInfos-Text5"></p></p>
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="LittlePanel">
                         <div class="MapDiv">
                             <div class="Map" id="map"></div>

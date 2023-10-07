@@ -144,6 +144,7 @@ main
   font-size: 1.3vw;
 }
 
+
 .WaterDiv
 {
     background-color: rgba(169, 163, 241, 0.35);
@@ -152,8 +153,21 @@ main
     padding-left: 2%;
     width: 100%;
     height: 250px;
-    border-radius: 10px;
+    border-radius: 10px; 
+    display: flex;
+    align-items: center; /* Aligner les éléments verticalement */
+    justify-content: space-between;   
 }
+
+.WaterDivLeft {
+    flex: 1; /* Laisser WaterDivLeft prendre l'espace disponible */
+    padding-right: 20px; /* Espacement entre WaterDivLeft et WaterDivRight */
+}
+
+.WaterDivRight {
+    flex: 1; /* Laisser WaterDivRight prendre l'espace disponible */
+}
+
 
 .WaterDivTitle
 {
@@ -161,6 +175,7 @@ main
     margin-top: 25px;
     margin-bottom: 5px;
 }
+
 
 .LittlePanel > .MapDiv, .CompassDiv
 {
@@ -170,6 +185,7 @@ main
     height: 49%;
     width: 49%;
     border-radius: 10px;
+
 }
 
 .MapDiv
@@ -195,6 +211,7 @@ main
 {
     display: inline-block;
 }
+
 
 /* When the screen is smaller than 850px wide */ 
 @media screen and (max-width: 850px) {
