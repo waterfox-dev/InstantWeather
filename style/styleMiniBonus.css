@@ -348,6 +348,7 @@
 .leaflet-touch .leaflet-bar a {
     width: 4.8vw !important;
     height: 4.8vw !important;
+    visibility: hidden;
     line-height: 4.9vw !important;
   }
 
