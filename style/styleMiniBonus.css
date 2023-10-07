@@ -42,7 +42,7 @@
 .TermometerActual {
     text-align: center;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 2vw;
     background-color: #4158D0;
     background-image: linear-gradient(0deg, #76A9E1 0%, #DAB43E 46%, #BF2929 100%);
     -webkit-background-clip: text;
@@ -74,18 +74,21 @@
   }
   
   @keyframes bubble {
-    90% {
-      opacity: 1;
+    0% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
     }
     100% {
       opacity: 0;
-      transform: translateX(9vw);
+      transform: translateX(145px);
     }
   }
 
 .container {
-    height: 30%;
-    width: 100%;
+    height: 26%;
+    width: 70%;
     background-color: #ffffff;
     border: 2px solid #dedede;
     border-radius: 10px;
@@ -147,23 +150,32 @@
     position: absolute;
     font-size: 20px;
     margin-bottom: 10px;
-    margin-left: 300px;
+    margin-left: 257px;
+    width: 180px;
 }
 
 .Map
 {
     width: 100%;
     height: 100%;
+    border-radius: 15px;
 }
 
-/*.Map
-{
-    width: 100%;
-    height: 100%;
-    border: 2px solid black;
-    border-radius: 10px;
-}
-*/
+
+/*  -------------- Compass -------------- */
+.svg-container {
+    width: 85%; /* Make the container responsive by setting its width to 100% */
+    max-width: 300px; /* Optionally, you can set a maximum width to control the size */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+    justify-content: center;
+  }
+  
+  .responsive-svg {
+    width: 65%; /* Make the SVG element responsive */
+    height: auto; /* Allow the height to adjust proportionally */
+  }
+  
 
 /*  -------------- Compass -------------- */
 .VitesseVent{
@@ -175,15 +187,15 @@
 
 .circle {
     margin: 0 auto;
-    width: 150px;
-    height: 150px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    font-size: 25px;
+    font-size: 2vw;
+    width: 70%;
+    height: 70%;
 }
 
 .quarter {
@@ -273,14 +285,14 @@
 
 .middle-top-text {
     position: absolute;
-    top: -35%;
+    top: -30%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .middle-bottom-text {
     position: absolute;
-    bottom: -35%;
+    bottom: -30%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -304,44 +316,65 @@
     transition-timing-function: ease;
     position: relative;
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
-
-.arrow-up {
-    width: 0;
-    height: 15%;
-    border-left: 1vw solid transparent;
-    border-right: 1vw solid transparent;
-    border-bottom: 6vw solid #000;
-}
-
-.arrow-down {
-    transform: rotate(180deg);
-    width: 0;
-    height: 0;
-    border-left: 1vw solid transparent;
-    border-right: 1vw solid transparent;
-    border-bottom: 6vw solid #F3F3F3;
-}
-
 
 .triangle {
     stroke: white;
     stroke-width: 3;
     fill: #2c0b8e;
-
-    @keyframes mymove {
-        0% {
-            opacity: 0
-        }
-
-        50% {
-            opacity: 1
-        }
-
-        100% {
-            opacity: 0
-        }
-    }
+}
+  
+@media screen and (max-width: 800px) {
+  .circle p{
+    font-size: 5vw;
+  }
+  
+  .circle{
+    height: 30vw;
+    width: 30vw;
+  }
 }
 
 /*  -------------- END Compass -------------- */
+
+.leaflet-touch .leaflet-bar a {
+    width: 1.8vw !important;
+    height: 2.5vw !important;
+    line-height: 2.5vw !important;
+  }
+
+  .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out {
+    font-size: 1.5vw !important;
+  }
+  .leaflet-bar a{
+    border-radius: 15px !important;
+    background: #ffffff !important;
+    color: #2c0b8e !important;
+    border: 2.8px solid #2c0b8e !important;
+    transition: transform 2s ease;
+    margin-bottom: 10%;
+  }
+  .leaflet-bar a:hover {
+    background: #2c0b8e !important;
+    color: white !important;
+  }
+
+  .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    border: none !important;
+  }
+
+  .leaflet-control-attribution{
+    width: 100% !important;
+    background: #fff !important;
+  }
+
+  .leaflet-container {
+    font: 1vw/1.5 "Arial", Arial, Helvetica, sans-serif !important;
+  }
+  
+  .leaflet-control-attribution, .leaflet-control-scale-line {
+    padding: 0 5px !important;
+    display: flex !important;
+  }

@@ -2,12 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>☁️ Instant Weather ☀️</title>
+        <title>Instant Weather</title>
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/styleBackground.css">
         <link rel="stylesheet" href="style/styleMiniBonus.css">    
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"> <!--Map API CSS-->
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script>
+        <link rel="icon" type="image/x-icon" href="assets/thermometer.ico"> <!--Map API Script-->
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script> <!--Map API Script-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <header>
@@ -16,6 +19,9 @@
         <div class="CenterMeteo">
             <input id="searchBar" class="SearchBar" placeholder="Entrer un code postal">
             <div id="divButtonCitySearch" class="SearchCity" ></div>
+            <div class="WeatherIconDiv" id="weatherIconDiv">
+                <img id="weatherSvg" src="assets/cloudy.svg" width="150px" height="150px">
+            </div>
             <div class="DivFlex">
                 <div id="dayBar" class="dayBar">
                     <button id="day1" class="dayButton dayHover"></button>
@@ -66,7 +72,7 @@
                         <div class="container" id="container">
                             <div class="glass" id="glass">
                                 <div class="water" id="water">
-                                    <p class="waterNum" id="waterNum">0 mm</p>
+                                    <p class="waterNum" id="waterNum">- 0 mm</p>
                                 </div>
                             </div>
                         </div>
@@ -74,21 +80,6 @@
 
                     <!-- Position slide -->
                     <div class="slide">
-                        <!--<div class="WeatherInfos-Latitude WeatherInfosDiv">
-                            <p>Latitude : </p>
-                            <p id="weatherInfos-Text6"></p>
-                        </div>
-
-                        <div class="WeatherInfos-Longitude WeatherInfosDiv">
-                            <p>Longitude : </p>
-                            <p id="weatherInfos-Text7"></p>
-                        </div>
-
-                        <div class="WeatherInfos-DirectionVent WeatherInfosDiv">
-                            <p>Temps : </p>
-                            
-                        </div> -->
-
                         <div class="Map" id="map"></div>
                     </div>
 
@@ -109,11 +100,11 @@
                             <div class="little-quarter little-quarter-bottom-left"></div>
                             <div class="little-quarter little-quarter-bottom-right"></div>
                             <div id="arrow" class="Arrow" height="150" width="150" >
-                                
-                                <svg>
-                                    <polygon points="75,20 45,110 105,110" class="triangle" />
-                                    Sorry, your browser does not support inline SVG.
-                                </svg>
+                                <div class="svg-container">
+                                    <svg viewBox="0 0 150 130" class="responsive-svg">
+                                        <polygon points="75,-30 10,115 140,115" class="triangle" />
+                                    </svg>
+                                </div>
                             </div>
                             <div class="middle-top-text">
                             <p>N</p>
@@ -128,10 +119,9 @@
                             <p>E</p>
                             </div>
                         </div>
-                        <div><img id="weatherSvg" src="assets/cloudy.svg" width="50" height="50"></div>
-
                     </div>
                 </div>
+                <div><img id="weatherSvg" src="assets/cloudy.svg" width="50" height="50"></div>
                 <div class="RightWeather" id="test">    </div>
             </div>
         </div>

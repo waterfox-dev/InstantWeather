@@ -112,6 +112,10 @@ body
   margin-bottom: 0.5vw;
 }
 
+.SearchBar:focus{
+  border-color: #2c0b8e;
+}
+
 /* -------------- Flex -------------- */
 
 .DivFlex{
@@ -269,13 +273,13 @@ button:hover:after {
   }
 
   .SearchCity button {
-    font-size: 2vh;
-    height: 4.5vh;
+    font-size: 30px;
+    height: 45px;
     margin-bottom: 0.2vh;
   }
 
   .SearchBar {
-    font-size: 2vh;
+    font-size: 35px;
     margin-top: 2vh;
     margin-bottom: 0.5vh;
     padding: 0.7vh;
@@ -299,8 +303,8 @@ button:hover:after {
   }
 
   .slide {
-    width: 40vw;
-    height: 30vw;
+    width: 80vw;
+    height: 45vw;
     font-size: 3vw;
   }
 
@@ -308,6 +312,7 @@ button:hover:after {
     font-size: 2vw;
   }
 
+  
   .WeatherInfosDiv p:nth-child(1) {
     width: 60%;
     margin-right: auto; /* Push to the left */
@@ -323,5 +328,13 @@ button:hover:after {
     animation:none;
   }
 
+  
+  .TermometerActual {
+    font-size: 5vw;
+  }
+
+  .DivFlex{
+    margin-top: 10px !important;
+  }
 }
 
