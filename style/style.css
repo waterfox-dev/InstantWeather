@@ -189,8 +189,8 @@ main
 }
 
 .WeatherInfos-VitesseVent{
-  font-size: 1.2vw;
-  margin-left: 1%;
+  font-size: 1.3vw;
+  margin-left: 5%;
   display: block ruby;
 }
 
@@ -430,10 +430,6 @@ main
     height: auto;
   }
 
-  .WeatherInfos-VitesseVent {
-    font-size: 2vw;
-  }
-
   .LittlePanel {
     width: 76.5vw;
     height: 76.5vw;
@@ -444,10 +440,6 @@ main
     width: 2.8vw !important;
     height: 2.8vw !important;
     line-height: 2.9vw !important;
-  }
-
-  .WaterDivLeft > .InfoDiv > p {
-    font-size: 2vw;
   }
 }
 
