@@ -10,123 +10,80 @@
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script>
         <link rel="icon" type="image/x-icon" href="assets/thermometer.ico"> <!--Map API Script-->
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" ></script> <!--Map API Script-->
+        <script src="https://kit.fontawesome.com/509547751b.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <header>
-            <h1 class="FirstHeader" id="firstHeader">☁️ Instant Weather ☀️</h1>
-        </header>
-        <div class="CenterMeteo">
-            <input id="searchBar" class="SearchBar" placeholder="Entrer un code postal">
+            <input id="searchBar" class="SearchBar" placeholder="Entrez un code postal">
             <div id="divButtonCitySearch" class="SearchCity" ></div>
-            <div class="WeatherIconDiv" id="weatherIconDiv">
-                <img id="weatherSvg" src="assets/cloudy.svg" width="150px" height="150px">
+        </header>
+        <main>
+            <h1 class="WeatherCity"><b>Météo sur Caen</b></h1>
+            <div class="DaySelector">
+                <i class="fa-solid fa-arrow-left"></i>
+                <p>Samedi 10 Octobre</p>
+                <i class="fa-solid fa-arrow-right"></i>
             </div>
-            <div class="DivFlex">
-                <div id="dayBar" class="dayBar">
-                    <button id="day1" class="dayButton dayHover"></button>
-                    <button id="day2" class="dayButton"></button>
-                    <button id="day3" class="dayButton"></button>
-                    <button id="day4" class="dayButton"></button>
-                    <button id="day5" class="dayButton"></button>
-                    <button id="day6" class="dayButton"></button>
-                    <button id="day7" class="dayButton"></button>
+            <div class="WeatherContent">
+                <div class="TempDiv">
+                    <img src="assets/cloudy.svg" width="275" height="275">
+                    <p class="BigTemp">17°C</p>
+                    <p class="SmallTemp">8°C - 22°C</p>
                 </div>
-
-                <div id="weatherInfos" class="WeatherInfos">
-                    <!-- Temperature slide -->
-                    <div id="temperature" class="slide">
-                        <div id="weatherInfos-TempMin" class="WeatherInfos-TempMin WeatherInfosDiv">
-                            <p>Température minimale : </p>
-                            <p id="weatherInfos-Text1"></p>
-                        </div>
-
-                        <div class="WeatherInfos-TempMax WeatherInfosDiv">
-                            <p>Température maximale : </p>
-                            <p id="weatherInfos-Text2"></p>
-                        </div>
-                        
-                        <div class="DivtermometerData">
-                            <p class="TermometerMin">-20°C</p>
-                            <p id="termometerActual" class="TermometerActual"></p>
-                            <p class="TermometerMax">50°C</p>
-                        </div>
+                <div class="StackPanel">
+                    <div class="WaterDiv">
+                        <p class="WaterDivTitle">Concernant la pluie</p>
+                        <p>Rique de précipitations :</p>
+                        <p>Cumul de la pluie sur la journée :</p>
+                        <p>Nombre d'heure d'ensollement : </p>
                     </div>
-
-                    <!-- Rain slide -->
-                    <div id="rain" class="slide">
-                        <div class="WeatherInfos-ProbabilitePluie WeatherInfosDiv">
-                            <p>Risque de précipitations : </p>
-                            <p id="weatherInfos-Text3"></p>
+                    <div class="LittlePanel">
+                        <div class="MapDiv">
+                            <div class="Map" id="map"></div>
                         </div>
-
-                        <div class="WeatherInfos-CumulDeLaPluie WeatherInfosDiv">
-                            <p>Cumul de la pluie sur la journée : </p>
-                            <p id="weatherInfos-Text4"></p>
-                        </div>
-
-                        <div class="WeatherInfos-NombreHeureEnsoleillement WeatherInfosDiv">
-                            <p>Nombre heure ensoleillement : </p>
-                            <p id="weatherInfos-Text5"></p>
-                        </div>
-                        <div class="container" id="container">
-                            <div class="glass" id="glass">
-                                <div class="water" id="water">
-                                    <p class="waterNum" id="waterNum">- 0 mm</p>
+                        <div class="CompassDiv">
+                            <div class="WeatherInfos-VitesseVent WeatherInfosDiv">
+                                <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
+                                <p id="weatherInfos-Text6"></p>
+                            </div>
+    
+                            <div class="circle">
+                                <div class="quarter quarter-top-left"></div>
+                                <div class="quarter quarter-top-right"></div>
+                                <div class="quarter quarter-bottom-left"></div>
+                                <div class="quarter quarter-bottom-right"></div>
+                                <div class="little-quarter little-quarter-top-left"></div>
+                                <div class="little-quarter little-quarter-top-right"></div>
+                                <div class="little-quarter little-quarter-bottom-left"></div>
+                                <div class="little-quarter little-quarter-bottom-right"></div>
+                                <div id="arrow" class="Arrow" height="150" width="150" >
+                                    <div class="svg-container">
+                                        <svg viewBox="0 0 150 130" class="responsive-svg">
+                                            <polygon points="75,-30 10,115 140,115" class="triangle" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="middle-top-text">
+                                <p>N</p>
+                                </div>
+                                <div class="middle-bottom-text">
+                                <p>S</p>
+                                </div>
+                                <div class="middle-left-text">
+                                <p>W</p>
+                                </div>
+                                <div class="middle-right-text">
+                                <p>E</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Position slide -->
-                    <div class="slide">
-                        <div class="Map" id="map"></div>
-                    </div>
-
-                    <!-- Wind slide -->
-                    <div class="slide">
-                        <div class="WeatherInfos-VitesseVent WeatherInfosDiv">
-                            <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
-                            <p id="weatherInfos-Text6"></p>
-                        </div>
-
-                        <div class="circle">
-                            <div class="quarter quarter-top-left"></div>
-                            <div class="quarter quarter-top-right"></div>
-                            <div class="quarter quarter-bottom-left"></div>
-                            <div class="quarter quarter-bottom-right"></div>
-                            <div class="little-quarter little-quarter-top-left"></div>
-                            <div class="little-quarter little-quarter-top-right"></div>
-                            <div class="little-quarter little-quarter-bottom-left"></div>
-                            <div class="little-quarter little-quarter-bottom-right"></div>
-                            <div id="arrow" class="Arrow" height="150" width="150" >
-                                <div class="svg-container">
-                                    <svg viewBox="0 0 150 130" class="responsive-svg">
-                                        <polygon points="75,-30 10,115 140,115" class="triangle" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="middle-top-text">
-                            <p>N</p>
-                            </div>
-                            <div class="middle-bottom-text">
-                            <p>S</p>
-                            </div>
-                            <div class="middle-left-text">
-                            <p>W</p>
-                            </div>
-                            <div class="middle-right-text">
-                            <p>E</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div><img id="weatherSvg" src="assets/cloudy.svg" width="50" height="50"></div>
-                <div class="RightWeather" id="test">    </div>
             </div>
-        </div>
-    <script src="javascript/weatherDict.js"></script>
-    <script src="javascript/script.js"></script>
-    <script src="javascript/scriptBackground.js"></script>
+        </main>
+        <script src="javascript/weatherDict.js"></script>
+        <script src="javascript/script.js"></script>
+        <script src="javascript/scriptBackground.js"></script>
     </body>
 </html>
