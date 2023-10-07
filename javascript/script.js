@@ -2,7 +2,7 @@ let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let weatherSvg = this.document.getElementById("weatherSvg");
-let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "", "", "km/h", "°", ""];
+let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "km/h", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "wind10m", "dirwind10m"]
 let actualCity; //City Choose Hover
 let actualDayHover = 1; //Day Button Hover
@@ -114,6 +114,7 @@ function getWeather(insee, day)
                 document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
                 
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
+                updateDegree(tempsMedium)
                 StopBubble();
                 changeTermometer(tempsMedium);
                 updateWeatherSVG(weather['weather']); 
@@ -123,6 +124,9 @@ function getWeather(insee, day)
                 {
                     console.log("A");
                     rain();
+                }
+                else{
+                    StopRain()
                 }
 
                 if(220 >= parseInt(weather['weather']) >= 222)
@@ -209,9 +213,9 @@ function changeTermometer(tempsMedium){
         svg.setAttribute('class', 'bubble');
         svg.setAttribute('preserveAspectRatio', 'xMinYMin');
         svg.setAttribute('viewBox', '0 0 2 3');
-        svg.style.width = Math.floor(Math.random() * 10) + "px";
+        svg.style.width = Math.floor(Math.random() * 13) + "px";
         svg.style.height = svg.style.width;
-        svg.style.left = Math.floor(Math.random() * 90) + "%";
+        svg.style.left = Math.floor(Math.random() * 85) + "%";
         svg.style.top = Math.floor(Math.random() * 70) + "%";
         
         const x = Math.floor(Math.random() * 100);
@@ -228,6 +232,14 @@ function changeTermometer(tempsMedium){
         
         svg.appendChild(path);
         divTemp.appendChild(svg);
+
+        
+        const divTermometer = document.getElementById("divtermometerInside");
+        const computedStyle = window.getComputedStyle(divTermometer);
+        const size = computedStyle.getPropertyValue('width');
+        root = document.documentElement;
+        root.style.setProperty('--bubble', size);
+        console.log(size)
     }  
 }   
 
@@ -305,6 +317,10 @@ function updateTextAndHeight() {
 
 // Add an event listener for the "resize" event
 resizeDiv.addEventListener('resize', updateTextAndHeight);
+
+window.addEventListener('resize', function() {
+    // Your code to handle the resize event goes here
+  });
 
 function updateWeatherSVG(state)
 {

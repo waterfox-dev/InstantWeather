@@ -71,7 +71,7 @@ function createRandomStars(nb)
 }
 
 
-function udpateHour(newHour)
+function updateHour(newHour)
 {
     currentHour = newHour;
     while (starContainer.firstChild) {
@@ -187,8 +187,6 @@ function rain()
         svg.style.setProperty('--s', s);
         
         SnowContainer.appendChild(svg);
-    console.log(SnowContainer)
-
         document.body.appendChild(SnowContainer);
     }
 }
@@ -206,7 +204,7 @@ function StopSnow() {
  */
 function init()
 {
-    udpateHour(currentHour);
+    updateHour(currentHour);
     updateDegree(currentDegree);
 }
 
