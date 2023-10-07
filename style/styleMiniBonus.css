@@ -334,9 +334,10 @@
     font-size: 5vw;
   }
   
-  .circle{
-    height: 30vw;
-    width: 30vw;
+  .circle {
+    height: 25vw;
+    width: 25vw;
+    margin-top: 13%;
   }
 }
 
@@ -371,6 +372,8 @@
   .leaflet-control-attribution{
     width: 100% !important;
     background: #fff !important;
+    font-size: 0.7vw !important;
+    white-space: nowrap;
   }
 
   .leaflet-container {
