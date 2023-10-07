@@ -19,24 +19,28 @@
             <div id="divButtonCitySearch" class="SearchCity" ></div>
         </header>
         <main>
-            <h1 class="WeatherCity"><b>Météo sur Caen</b></h1>
-            <div class="DaySelector">
-                <i class="fa-solid fa-arrow-left"></i>
-                <p>Samedi 10 Octobre</p>
-                <i class="fa-solid fa-arrow-right"></i>
+            <div class="City-Day">
+                <div class="WeatherCity"><b>Météo sur Caen</b></div>
+                <div class="DaySelector">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <p>Samedi 10 Octobre</p>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
             </div>
             <div class="WeatherContent">
                 <div class="TempDiv">
-                    <img src="assets/cloudy.svg" width="275" height="275">
-                    <p class="BigTemp">17°C</p>
-                    <p class="SmallTemp">8°C - 22°C</p>
+                    <img src="assets/cloudy.svg" class="imgTemps">
+                    <div class="Temperature-Text">
+                        <p class="BigTemp">17°C</p>
+                        <p class="SmallTemp">8°C - 22°C</p>
+                    </div>
                 </div>
                 <div class="StackPanel">
                     <div class="WaterDiv">
                         <p class="WaterDivTitle">Concernant la pluie</p>
-                        <p>Rique de précipitations :</p>
+                        <p>Risque de précipitations :</p>
                         <p>Cumul de la pluie sur la journée :</p>
-                        <p>Nombre d'heure d'ensollement : </p>
+                        <p>Nombre d'heure d'ensolleiment : </p>
                     </div>
                     <div class="LittlePanel">
                         <div class="MapDiv">
@@ -81,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            <div class="RightWeather" id="test">    </div>
         </main>
         <script src="javascript/weatherDict.js"></script>
         <script src="javascript/script.js"></script>
