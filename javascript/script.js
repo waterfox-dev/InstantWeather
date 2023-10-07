@@ -115,7 +115,7 @@ function getWeather(insee, day)
                 
                 let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                 updateDegree(tempsMedium)
-                StopBubble();
+                stopBubble();
                 changeTermometer(tempsMedium);
                 updateWeatherSVG(weather['weather']); 
 
@@ -132,8 +132,8 @@ function getWeather(insee, day)
                 }
                 else
                 {
-                    StopSnow();
-                    StopRain();
+                    stopSnow();
+                    stopRain();
                 }
 
                 if(mapReset == 0)
@@ -244,7 +244,7 @@ function changeTermometer(tempsMedium){
 /**
  * Stop the emission of bubble
  */
-function StopBubble() {
+function stopBubble() {
     if (document.getElementById('DivTermometer')) {
         const divToDelete = document.getElementById('DivTermometer');
         divToDelete.remove();
@@ -305,8 +305,6 @@ function updateTextAndHeight() {
     var height = document.getElementById('water').style.height; // e.g., "47.5px"
     var numericHeight = parseFloat(height); // Parse the float value from the string
     var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
-
-    //console.log(result);
 
     currentHeightSpan.textContent = "- " + result + "mm";
     requestAnimationFrame(updateTextAndHeight);

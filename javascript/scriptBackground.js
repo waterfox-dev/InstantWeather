@@ -150,7 +150,7 @@ function rain()
     }  
 }
 
-  function StopRain() {
+  function stopRain() {
     if (document.getElementById('RainBackground')) {
         const divToDelete = document.getElementById('RainBackground');
         divToDelete.remove();
@@ -192,7 +192,7 @@ function rain()
 }
 
 
-function StopSnow() {
+function stopSnow() {
     if (document.getElementById('snow')) {
         const divToDelete = document.getElementById('snow');
         divToDelete.remove();
