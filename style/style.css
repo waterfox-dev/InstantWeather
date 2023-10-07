@@ -436,10 +436,9 @@ main
     margin-left: 5%;
   }
 
-  .leaflet-touch .leaflet-bar a {
-    width: 2.8vw !important;
-    height: 2.8vw !important;
-    line-height: 2.9vw !important;
+  .WaterDivLeft > .InfoDiv > p{
+    font-size: 1.5vw;
   }
+  
 }
 
