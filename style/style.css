@@ -37,20 +37,14 @@
    }
 }
 
-html
-{
-    height: 100vh;
-}
 header{
   display: block;
 }
-
 
 body
 {
     background-color: #C6D2FF;
     font-family: 'Cambay', sans-serif;
-    height: 100vh;
 }
 
 .SearchBar
@@ -105,7 +99,7 @@ main
     margin-left: 7%;
     margin-right: 7%;   
     border-radius: 10px;
-    margin-bottom: 0%;
+    margin-bottom: 25px;
 }
 
 .WeatherCity
@@ -139,10 +133,6 @@ main
 
 .City-Day{
   display: flex;
-}
-
-.WaterDivLeft{
-  margin-top: 3%;
 }
 
 .TempDiv
@@ -227,8 +217,8 @@ main
 .WaterDivTitle
 {
     font-size: 2vw;
-    margin-top: 6px;
-    margin-bottom: 13px;
+    margin-top: 25px;
+    margin-bottom: 5px;
 }
 
 .WaterDivInside{
@@ -278,7 +268,7 @@ main
     display: inline-block;
 }
 
-.Footer
+footer
 {
     text-align: center;
 }
@@ -430,9 +420,9 @@ main
   }
 
   .WaterDiv{
-    padding-left: 3%;
+    padding-left: 0%;
     margin-left: 5%;
-    width: 86%;
+    width: 90%;
     height: auto;
   }
 
@@ -442,9 +432,10 @@ main
     margin-left: 5%;
   }
 
-  .WaterDivLeft > .InfoDiv > p{
-    font-size: 1.5vw;
+  .leaflet-touch .leaflet-bar a {
+    width: 2.8vw !important;
+    height: 2.8vw !important;
+    line-height: 2.9vw !important;
   }
-  
 }
 
