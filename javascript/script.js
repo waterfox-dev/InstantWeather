@@ -94,7 +94,7 @@ function getCity(cp)
 function getWeather(insee, day)
 {
     //console.log(insee);
-    fetch(`https://api.meteo-concept.com/api/forecast/daily?token=5a53a6c6c06bdf4db59b5848acd3050994fd48fff83f9f7c201cf0f7447a6835&insee=${insee}`)
+    fetch(`https://api.meteo-concept.com/api/forecast/daily?token=b3aa15a4ca4861c821e0a2823b09726840c7a167f998a0a1f2976b34a4e67a2b&insee=${insee}`)
     .then(response => response.json())
     .then(
         data =>
