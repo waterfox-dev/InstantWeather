@@ -167,14 +167,14 @@ main
     margin-top: 25px;
     display: inline-block; 
     background-color: rgba(169, 163, 241, 0.35);
-    height: 49%;
-    width: 49%;
+    height: 48%;
+    width: 48%;
     border-radius: 10px;
 }
 
 .MapDiv
 {
-    background-color: rgba(169, 163, 241, 0.35);
+  margin-right: 2%;
 }
 
 .CompassDiv
@@ -196,10 +196,24 @@ main
     display: inline-block;
 }
 
+@media screen and (max-width: 1200px) {
+  .SmallTemp {
+    font-size: 3.5vw;
+  }
+  .BigTemp {
+    font-size: 6vw;
+  }
+}
+
 /* When the screen is smaller than 850px wide */ 
 @media screen and (max-width: 850px) {
   body{
-    font-size: 2.8vw !important;
+    font-size: 1.8vw !important;
+  }
+
+  .TempDiv2{
+    display: block;
+    width: 50%;
   }
 
   .details{
@@ -285,7 +299,7 @@ main
   }
 
   .WaterDivTitle{
-    font-size: 6vw;
+    font-size: 3vw;
   }
 
   .TempDiv{
@@ -296,6 +310,7 @@ main
 
   .DaySelector {
     width: 100%;
+    margin-top: -40px;
   }
 
   .BigTemp{
