@@ -124,9 +124,7 @@ function getWeather(insee, day)
                 {
                     rain();
                 }
-                else{
-                    StopRain()
-                }
+
 
                 else if(220 >= parseInt(weather['weather']) >= 222)
                 {
