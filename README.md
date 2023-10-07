@@ -12,3 +12,11 @@ Grâce à nos différents thèmes, variant en fonction de la météo ainsi que d
 ![Thème neige](assets/screens/snow.png)
 <p text-align='center'>Un hiver froid...</p>
 
+### Une carte 🗺️
+Supposons que vous soyez perdu, des choses qui arrivent... Avec InstantWeather et sa carte intégrée, vous savez maintenant où vous vous trouvez. D'une précision fine, la carte sera un atout précieux. 
+
+### Au fait de l'humidité ☔
+Le widget seau permet de visualiser intuitivement la quantité d'eau tombée sur une zone donnée. Que ce soit pour jardiner, ou pour savoir comment vous habiller, le widget seau sait être utile dans des cas des plus quotidiens aux plus spécifiques. 
+
+### La boussole 🧭
+Philippe Guilhén serait fier, et à juste titre. La boussole est l'outil parfait pour connaître la direction du vent. Simple d'utilisation, la boussole sera vous aiguiller. 
