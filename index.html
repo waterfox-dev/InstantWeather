@@ -14,11 +14,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <header>
+        <header id="header">
             <input id="searchBar" class="SearchBar" placeholder="Entrez un code postal">
             <div id="divButtonCitySearch" class="SearchCity"></div>
         </header>
-        <main>
+        <main id="content">
             <div class="City-Day">
                 <h1 class="WeatherCity" id ="weatherCity"><b>Météo sur Caen</b></h1>
                 <div class="DaySelector">
@@ -27,7 +27,7 @@
                     <i class="fa-solid fa-arrow-right" id="tommorowArrow"></i>
                 </div>
             </div>
-            <div class="WeatherContent">
+            <div class="WeatherContent" id="WeatherContent">
                 <div class="TempDiv">
                     <img id="weatherSvg" class="imgTemps"  src="assets/cloudy.svg" alt="Icone de météo">
                     <div class="TempDiv2">
