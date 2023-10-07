@@ -64,6 +64,7 @@ function getCity(cp)
                     //console.log(button.id);
                     //console.log(button.textContent);
                     searchBar.value = button.textContent;
+                    document.getElementById("weatherCity").innerText = "Météo sur " + button.textContent;
                     //console.log(button.id);
                     getWeather(button.id, 0);
                     actualCity = button.id;
