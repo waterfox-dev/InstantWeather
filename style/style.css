@@ -38,8 +38,7 @@
 }
 
 header{
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 body
@@ -54,14 +53,44 @@ body
     height: 40px;
     background-color: #D9D9D9;
     border-style: none;
-    border-radius: 10px;
     color: black;
-    margin-left: 50px;
+    margin-left: 25vw;
     margin-top: 25px;
-    font-size: 25px;
-    padding-left: 30px;
+    font-size: 30px;
     margin-bottom: 2%;
     text-align: center;
+    border-radius: 100px;
+}
+
+
+.SearchCity {
+  position: absolute;
+  width: 50vw;
+  height: auto;
+  margin-left: 25vw;
+  margin-bottom: 2%;
+  top: 76px;
+  z-index: 1000;
+}
+
+.SearchCity button {
+  font-size: 30px;
+  height: 45px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #2c0b8e;
+  background-color: white;
+  z-index: 10000;
+  color: #2c0b8e;
+}
+
+.SearchCity button:hover{
+  color: #ffffff;
+  background-color: #2c0b8e;
+  cursor: pointer;
+  transition-duration: 100ms;
+  transition-timing-function: ease;
+  transform: scale(1.1,1.1);
 }
 
 main
@@ -130,6 +159,21 @@ main
     font-size: 45px;
 }
 
+.fa-solid{
+  margin: 2%;
+}
+
+.fa-solid:hover{
+  transition-duration: 1000ms;
+  transition-timing-function: ease;
+  transform: scale(1.5,1.5) rotate(360deg);
+  color: #2c0b8e;
+}
+
+.currentDate{
+  text-decoration: underline;
+}
+
 .StackPanel{
   width: 48%;
 }
@@ -182,15 +226,15 @@ main
     margin-top: 25px;
     display: inline-block; 
     background-color: rgba(169, 163, 241, 0.35);
-    height: 49%;
-    width: 49%;
+    height: 48%;
+    width: 48%;
     border-radius: 10px;
 
 }
 
 .MapDiv
 {
-    background-color: rgba(169, 163, 241, 0.35);
+  margin-right: 2%;
 }
 
 .CompassDiv
@@ -212,11 +256,24 @@ main
     display: inline-block;
 }
 
+@media screen and (max-width: 1200px) {
+  .SmallTemp {
+    font-size: 3.5vw;
+  }
+  .BigTemp {
+    font-size: 6vw;
+  }
+}
 
 /* When the screen is smaller than 850px wide */ 
 @media screen and (max-width: 850px) {
   body{
-    font-size: 2.8vw !important;
+    font-size: 1.8vw !important;
+  }
+
+  .TempDiv2{
+    display: block;
+    width: 50%;
   }
 
   .details{
@@ -231,18 +288,13 @@ main
     font-size: 4vh;
   }
 
-  .SearchCity button {
-    font-size: 30px;
-    height: 45px;
-    margin-bottom: 0.2vh;
-  }
-
   .SearchBar {
     font-size: 35px;
     margin-top: 2vh;
     margin-bottom: 0.5vh;
     padding: 0.7vh;
   }
+
 
   .dayBar {
     margin-top: -4vh;
@@ -302,7 +354,7 @@ main
   }
 
   .WaterDivTitle{
-    font-size: 6vw;
+    font-size: 3vw;
   }
 
   .TempDiv{
@@ -313,6 +365,7 @@ main
 
   .DaySelector {
     width: 100%;
+    margin-top: -40px;
   }
 
   .BigTemp{
@@ -360,6 +413,10 @@ main
     width: 76.5vw;
     height: 76.5vw;
     margin-left: 5%;
+  }
+
+  .leaflet-control-attribution{
+    font-size: 1.7vw !important;
   }
 }
 
