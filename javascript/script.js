@@ -133,7 +133,6 @@ function getWeather(insee, day)
                     const elements = document.querySelectorAll('.leaflet-touch .leaflet-bar a');
 
                     if(window.innerWidth > 850){
-                        console.log(element.style.width)
                         elements.forEach(element => {
                             console.log(element.style.width)
                             element.style.width = '2.8vw !important';

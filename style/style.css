@@ -186,6 +186,7 @@ main
 
 .WeatherInfos-VitesseVent{
   font-size: 1.3vw;
+  margin-left: 5%;
   display: block ruby;
 }
 
