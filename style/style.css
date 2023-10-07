@@ -36,7 +36,13 @@
       opacity: 1;
    }
 }
- 
+
+header
+{
+    justify-content: center;
+    display: flex;
+}
+
 body
 {
     background-color: #C6D2FF;
@@ -64,7 +70,7 @@ main
     margin-left: 7%;
     margin-right: 7%;   
     border-radius: 10px;
-    height: 710px;
+    height: 750px;
 }
 
 h1
@@ -156,6 +162,18 @@ h1
 .CompassDiv
 {
     vertical-align: top;
+}
+
+.SmallTemp > p
+{
+    display: inline-block; 
+    font-size: 30px;
+}
+
+.InfoDiv > p 
+{
+    display: inline-block; 
+    
 }
 /* When the screen is smaller than 700px wide */ 
 @media screen and (max-width: 800px) {

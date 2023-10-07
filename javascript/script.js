@@ -1,12 +1,14 @@
-let weatherInfos = this.document.getElementById("weatherInfos");
 let searchBar = this.document.getElementById("searchBar");
 let divButtonCitySearch = this.document.getElementById("divButtonCitySearch");
 let weatherSvg = this.document.getElementById("weatherSvg");
+
 let strWeatherInfos = ["°C", "°C", "%", "mm", "h", "km/h", "", "km/h", "°", ""];
 let strWeatherKey = ["tmin", "tmax", "probarain", "rr10", "sun_hours", "wind10m", "dirwind10m"]
 let actualCity; //City Choose Hover
 let actualDayHover = 1; //Day Button Hover
 let mapReset = 0;   //Map Status
+let actualDay = 0;
+let globInsee = 14000;
 
 /* -------------------- EVENT LISTENERS -------------------- */
 
@@ -16,15 +18,18 @@ searchBar.addEventListener("input", (event) =>
     getCity(parseInt(searchBar.value));
 });
 
-for(let i = 1; i < 8; i++){
-    document.getElementById(`day${i}`).addEventListener("click", () => {
-        getWeather(actualCity, i-1);
+document.getElementById("tommorowArrow").addEventListener('click', () =>
+{   
+    actualDay += 1;           
+    getWeather(globInsee, actualDay);      
+})
 
-        document.getElementById(`day${actualDayHover}`).classList.remove("dayHover");
-        document.getElementById(`day${i}`).classList.add("dayHover");
-        actualDayHover = i;
-    });
-}
+document.getElementById("yesterdayArrow").addEventListener('click', () =>
+{
+    actualDay -= 1;           
+    getWeather(globInsee, actualDay)
+})
+
 
 /* -------------------- END OF EVENT LISTENERS -------------------- */
 
@@ -56,7 +61,6 @@ function getCity(cp)
                 button.addEventListener('click', () =>
                 {
 
-
                     //console.log(button.id);
                     //console.log(button.textContent);
                     searchBar.value = button.textContent;
@@ -69,6 +73,9 @@ function getCity(cp)
                     }
                 });
             }
+
+            this.document.getElementById()
+
         })
     .catch(error =>
         {
@@ -95,57 +102,67 @@ function getWeather(insee, day)
             {
                 window.alert("L'api meteo concept ne fourni pas de prévisions pour ce lieu");
                 console.log(data['code']);
-                document.getElementById("weatherInfos").style.visibility = 'hidden';
-                document.getElementById("dayBar").style.visibility = 'hidden';
             }
             else 
             {
-                document.getElementById("weatherInfos").style.visibility = 'visible';
-                document.getElementById("dayBar").style.visibility = 'visible';
-                let weather = data.forecast[day];
 
-                for(let i = 1; i < strWeatherKey.length; i++)
+                globInsee = insee;
+                udpateDate(day)
+                try
                 {
-                    document.getElementById(`weatherInfos-Text${i}`).innerText = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
-                }
-
-                document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
-
-                document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
-                
-                let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
-                updateDegree(tempsMedium)
-                StopBubble();
-                changeTermometer(tempsMedium);
-                updateWeatherSVG(weather['weather']); 
-
-
-                if(parseInt(weather['weather']) >= 10 && parseInt(weather['weather']) <= 78)
-                {
-                    rain();
-                }
-
-
-                else if(220 >= parseInt(weather['weather']) >= 222)
-                {
-                    snow();
-                }
-                else
-                {
+                    let weather = data.forecast[day];
+                    for(let i = 1; i < strWeatherKey.length; i++)
+                    {
+                        let currentText = document.getElementById(`weatherInfos-Text${i}`);
+                        currentText.innerHTML = `${weather[strWeatherKey[i-1]]} ${strWeatherInfos[i-1]}`;
+                    }
+    
+                    document.getElementById("arrow").style.transform = `rotate(${weather['dirwind10m']}deg)`;
+    
+                    // document.getElementById("water").style.height = (weather['rr10'] + 45) + 'px';
+                    
+                    let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
+                    document.getElementById("medTemp").innerText = `${tempsMedium} °C`;
+                    updateDegree(tempsMedium)
+                    StopBubble();
+                    // changeTermometer(tempsMedium);
+                    updateWeatherSVG(weather['weather']); 
+    
                     StopSnow();
                     StopRain();
+
+                    if(parseInt(weather['weather']) >= 10 && parseInt(weather['weather']) <= 78)
+                    {
+                        rain();
+                    }
+    
+    
+                    else if(220 >= parseInt(weather['weather']) >= 222)
+                    {
+                        snow();
+                    }
+                    else
+                    {
+                        StopSnow();
+                        StopRain();
+                    }
+    
+                    if(mapReset == 0)
+                    {
+                        loadMap(weather['latitude'], weather['longitude'], "map");
+                        mapReset++;
+                    }
+                    else
+                    {
+                        realoadMap(weather['latitude'], weather['longitude'], "map");
+                        mapReset++;
+                    }
+                }
+                catch(error)
+                {
+                    window.alert("Données insuffisantes pour ce jour");
                 }
 
-                if(mapReset == 0)
-                {
-                    loadMap(weather['latitude'], weather['longitude'], "map");
-                    mapReset++;
-                }
-                else
-                {
-                    realoadMap(weather['latitude'], weather['longitude'], "map");
-                    mapReset++;
-                }
             }
         }
     )
@@ -156,20 +173,10 @@ function getWeather(insee, day)
  */
 function init(){
     // Get the current date
-    var currentDate = new Date();
+    udpateDate(0);
 
-    for (var i = 1; i < 8; i++) {
-        var listItem = document.getElementById(`day${i}`);
-
-        // Add the current date and increment it by 1 day
-        var dateString = currentDate.toLocaleDateString();
-        listItem.textContent = dateString;
-
-        // Increment the current date by 1 day for the next iteration
-        currentDate.setDate(currentDate.getDate() + 1);
-    }
-    
-    updateTextAndHeight();
+   
+    // updateTextAndHeight();
 }
 
 /* -------------------- Termometer Config -------------------- */
@@ -299,22 +306,20 @@ const currentHeightSpan = document.getElementById('waterNum');
 /**
  * Update Bucket style
  */
-function updateTextAndHeight() {
-    const currentHeight = resizeDiv.clientHeight;
+// function updateTextAndHeight() {
 
-    var height = document.getElementById('water').style.height; // e.g., "47.5px"
-    var numericHeight = parseFloat(height); // Parse the float value from the string
-    var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
+//     var height = document.getElementById('water').style.height; // e.g., "47.5px"
+//     var numericHeight = parseFloat(height); // Parse the float value from the string
+//     var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
 
-    //console.log(result);
+//     //console.log(result);
 
-    currentHeightSpan.textContent = "- " + result + "mm";
-    requestAnimationFrame(updateTextAndHeight);
-}
+//     currentHeightSpan.textContent = "- " + result + "mm";
+//     requestAnimationFrame(updateTextAndHeight);
+// }
 
 
 // Add an event listener for the "resize" event
-resizeDiv.addEventListener('resize', updateTextAndHeight);
 
 window.addEventListener('resize', function() {
     // Your code to handle the resize event goes here
@@ -323,6 +328,14 @@ window.addEventListener('resize', function() {
 function updateWeatherSVG(state)
 {
     weatherSvg.src = "assets/" + weatherIconDay[`${state}`];
+}
+
+function udpateDate(day)
+{
+    const today = new Date() // get today's date
+    const tomorrow = new Date(today)
+    tomorrow.setDate(today.getDate() + day)
+    document.getElementById("currentDate").innerHTML = tomorrow.toDateString();
 }
 
 init();

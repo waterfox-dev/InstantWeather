@@ -21,22 +21,32 @@
         <main>
             <h1 class="WeatherCity"><b>Météo sur Caen</b></h1>
             <div class="DaySelector">
-                <i class="fa-solid fa-arrow-left"></i>
-                <p>Samedi 10 Octobre</p>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-left" id="yesterdayArrow"></i>
+                <p id="currentDate">10/10/2023</p>
+                <i class="fa-solid fa-arrow-right" id="tommorowArrow"></i>
             </div>
             <div class="WeatherContent">
                 <div class="TempDiv">
-                    <img src="assets/cloudy.svg" width="275" height="275">
-                    <p class="BigTemp">17°C</p>
-                    <p class="SmallTemp">8°C - 22°C</p>
+                    <img id="weatherSvg" src="assets/cloudy.svg" width="275" height="275">
+                    <p class="BigTemp" id="medTemp"></p>
+                    <div class="SmallTemp">
+                        <p id="weatherInfos-Text1"></p>
+                        <p> - </p>
+                        <p id="weatherInfos-Text2"></p>
+                    </div>
                 </div>
                 <div class="StackPanel">
                     <div class="WaterDiv">
                         <p class="WaterDivTitle">Concernant la pluie</p>
-                        <p>Rique de précipitations :</p>
-                        <p>Cumul de la pluie sur la journée :</p>
-                        <p>Nombre d'heure d'ensollement : </p>
+                        <div class="InfoDiv"> 
+                            <p>Rique de précipitations :</p> <p id = "weatherInfos-Text3"></p></p>
+                        </div>
+                        <div class="InfoDiv"> 
+                            <p>Cumul de la pluie sur la journée :</p> <p id = "weatherInfos-Text4"></p></p>
+                        </div>
+                        <div class="InfoDiv"> 
+                            <p>Nombre d'heure d'ensollement : </p> <p id = "weatherInfos-Text5"></p></p>
+                        </div>
                     </div>
                     <div class="LittlePanel">
                         <div class="MapDiv">
@@ -44,8 +54,7 @@
                         </div>
                         <div class="CompassDiv">
                             <div class="WeatherInfos-VitesseVent WeatherInfosDiv">
-                                <p>Vitesse du vent <span class="details">(à 10m)</span> : </p>
-                                <p id="weatherInfos-Text6"></p>
+                                <p id="weatherInfos-Text6">Vitesse du vent <span class="details">(à 10m)</span> : </p>
                             </div>
     
                             <div class="circle">
@@ -81,6 +90,7 @@
                     </div>
                 </div>
             </div>
+            <div class="RightWeather" id="test">    </div>
         </main>
         <script src="javascript/weatherDict.js"></script>
         <script src="javascript/script.js"></script>
