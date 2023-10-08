@@ -231,7 +231,7 @@ main
 }
 
 .WaterDivLeft > .InfoDiv > p{
-  font-size: 18px;
+  font-size: 1vw;
 }
 
 .LittlePanel > .MapDiv, .CompassDiv
