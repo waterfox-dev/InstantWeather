@@ -18,6 +18,34 @@ searchBar.addEventListener("input", (event) =>
     getCity(parseInt(searchBar.value));
 });
 
+document.getElementById("header").addEventListener("mouseenter", (event) =>
+{
+    document.getElementById("content").style.opacity = "0.5";
+});
+
+document.getElementById("header").addEventListener("mouseleave", (event) => {
+    document.getElementById("content").style.opacity = "1";
+});
+
+/*
+var element = document.querySelector(".SearchBar");
+
+// Add a blur event listener to the element
+element.addEventListener("blur", function () {
+    while (divButtonCitySearch.hasChildNodes()) {
+        divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
+    }
+});*/
+
+/*
+searchBar.addEventListener("on", (event) =>
+{
+    while (divButtonCitySearch.hasChildNodes()) {
+        //console.log(divButtonCitySearch.firstChild);
+        divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
+    }
+});*/
+
 document.getElementById("tommorowArrow").addEventListener('click', () =>
 {   
     actualDay += 1;           
@@ -60,7 +88,7 @@ function getCity(cp)
                 divButtonCitySearch.appendChild(button);
                 button.addEventListener('click', () =>
                 {
-
+                    document.getElementById("content").style.opacity = "1";
                     //console.log(button.id);
                     //console.log(button.textContent);
                     searchBar.value = button.textContent;
@@ -107,8 +135,10 @@ function getWeather(insee, day)
             else 
             {
                 document.getElementById("content").style.visibility = "visible";
-                document.getElementById("header").style.height = "auto";
-                document.getElementById("divButtonCitySearch").style.top = "76px";
+                document.getElementById("header").style.display = "flex";
+                document.getElementById("divButtonCitySearch").style.position = "absolute";
+                document.getElementById("searchBar").style.marginTop = "25px";
+                document.getElementById("divButtonCitySearch").style.top = "70px";
 
                 globInsee = insee;
                 udpateDate(day)
@@ -176,8 +206,9 @@ function getWeather(insee, day)
 function init(){
 
     document.getElementById("content").style.visibility = "hidden";
-    document.getElementById("header").style.height = "100vh";
-    document.getElementById("divButtonCitySearch").style.top = "500px";
+    document.getElementById("searchBar").style.marginTop = "40vh";
+    document.getElementById("header").style.display = "block";
+    document.getElementById("divButtonCitySearch").style.position = "inherit";
 
     udpateDate(0);
     updateTextAndHeight();
