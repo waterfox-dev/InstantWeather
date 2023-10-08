@@ -12,10 +12,10 @@
 
 /* -------------- Background Rain-------------- */
 .rain__drop {
-  -webkit-animation-delay: calc(var(--d) * 1s);
-          animation-delay: calc(var(--d) * 1s);
-  -webkit-animation-duration: calc(var(--a) * 1s);
-          animation-duration: calc(var(--a) * 1s);
+  -webkit-animation-delay: calc(var(--d) * 1.5s);
+          animation-delay: calc(var(--d) * 1.5s);
+  -webkit-animation-duration: calc(var(--a) * 1.5s);
+          animation-duration: calc(var(--a) * 1.5s);
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-name: drop;
@@ -28,7 +28,7 @@
   top: calc((var(--y) + 50) * -1px);
 }
 .rain__drop path {
-  fill: #a1c6cc;
+  fill: #d0e0e2;
   opacity: var(--o);
   transform: scaleY(calc(var(--s) * 1.5));
 }
