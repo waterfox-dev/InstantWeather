@@ -65,7 +65,7 @@ function getCity(cp)
                 button.id = data[city].code;
             
                 button.classList.add("fade-in");
-                button.style.fontSize = "3vw";
+                button.classList.add("CityButton");
                 divButtonCitySearch.appendChild(button);
             
                 button.addEventListener('click', () =>

@@ -340,6 +340,16 @@
     height: 21vw;
     width: 21vw;
   }
+
+  .container {
+    height: 200px;
+    width: 50px;
+  }
+  .waterNum
+  {
+    font-size: 15px;
+    margin-left: -70px;
+  }
 }
 
 /*  -------------- END Compass -------------- */
@@ -386,3 +396,4 @@
     padding: 0 5px !important;
     display: flex !important;
   }
+}

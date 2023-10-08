@@ -397,7 +397,7 @@ main
   }
 
   .WaterDivTitle{
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   .TempDiv{
@@ -464,6 +464,16 @@ main
 
   .WeatherInfos-VitesseVent {
     font-size: 2vw;
+  }
+
+  .CityButton
+  {
+    font-size: 3vw;
+  }
+  .SearchCity button
+  {
+    font-size: 3vw;
+
   }
 }
 
