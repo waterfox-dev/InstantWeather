@@ -138,6 +138,7 @@ function getWeather(insee, day)
                 document.getElementById("header").style.display = "flex";
                 document.getElementById("divButtonCitySearch").style.position = "absolute";
                 document.getElementById("searchBar").style.marginTop = "25px";
+                document.getElementById("searchBar").style.marginBottom = "25px";
                 document.getElementById("divButtonCitySearch").style.top = "70px";
 
                 globInsee = insee;
