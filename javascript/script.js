@@ -27,25 +27,6 @@ document.getElementById("header").addEventListener("mouseleave", (event) => {
     document.getElementById("content").style.opacity = "1";
 });
 
-/*
-var element = document.querySelector(".SearchBar");
-
-// Add a blur event listener to the element
-element.addEventListener("blur", function () {
-    while (divButtonCitySearch.hasChildNodes()) {
-        divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
-    }
-});*/
-
-/*
-searchBar.addEventListener("on", (event) =>
-{
-    while (divButtonCitySearch.hasChildNodes()) {
-        //console.log(divButtonCitySearch.firstChild);
-        divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
-    }
-});*/
-
 document.getElementById("tommorowArrow").addEventListener('click', () =>
 {   
     actualDay += 1;           
@@ -75,7 +56,6 @@ function getCity(cp)
         data =>
         {
             while (divButtonCitySearch.hasChildNodes()) {
-                //console.log(divButtonCitySearch.firstChild);
                 divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
             }
             for(city in data)
@@ -83,28 +63,22 @@ function getCity(cp)
                 let button = document.createElement("button"); 
                 button.textContent = data[city].nom;
                 button.id = data[city].code;
-                //console.log(button.id);
-              
+            
+                button.classList.add("fade-in");
                 divButtonCitySearch.appendChild(button);
+            
                 button.addEventListener('click', () =>
                 {
                     document.getElementById("content").style.opacity = "1";
-                    //console.log(button.id);
-                    //console.log(button.textContent);
                     searchBar.value = button.textContent;
                     document.getElementById("weatherCity").innerText = "Météo sur " + button.textContent;
-                    //console.log(button.id);
                     getWeather(button.id, 0);
                     actualCity = button.id;
                     while (divButtonCitySearch.hasChildNodes()) {
-                        //console.log(divButtonCitySearch.firstChild);
                         divButtonCitySearch.removeChild(divButtonCitySearch.firstChild);
                     }
                 });
             }
-
-            this.document.getElementById()
-
         })
     .catch(error =>
         {
@@ -164,20 +138,23 @@ function getWeather(insee, day)
                     StopSnow();
                     StopRain();
 
-                    if(parseInt(weather['weather']) >= 10 && parseInt(weather['weather']) <= 78)
+                    let actualWeather = parseInt(weather['weather']);
+
+                    if((actualWeather >= 10 && actualWeather <= 15) || (actualWeather >= 30 && actualWeather <= 78) || (actualWeather >= 130 && actualWeather <= 141) || (actualWeather >= 210 && actualWeather <= 212)  || (actualWeather >= 230 && actualWeather <= 232))
                     {
                         rain();
                     }
-    
-    
-                    else if(220 >= parseInt(weather['weather']) >= 222)
+                    else{
+                        StopRain();
+                    }
+
+                    if((actualWeather >= 20 && actualWeather <= 32) || (actualWeather >= 60 && actualWeather <= 78) || (actualWeather >= 120 && actualWeather <= 138) || (actualWeather >= 141 && actualWeather <= 142) || (actualWeather >= 220 && actualWeather <= 232))
                     {
                         snow();
                     }
                     else
                     {
                         StopSnow();
-                        StopRain();
                     }
     
                     if(mapReset == 0)
@@ -214,86 +191,6 @@ function init()
     udpateDate(0);
     updateTextAndHeight();
 }
-
-/* -------------------- Termometer Config -------------------- */
-/**
- * Update Termometer style depending on medium temperature
- * @param {int} tempsMedium The medium temperature
- */
-function changeTermometer(tempsMedium){
-    let DivTermometer = document.createElement('div');
-    DivTermometer.id = "DivTermometer";
-    DivTermometer.classList.add("DivTermometer");
-
-    document.getElementById("temperature").appendChild(DivTermometer);
-
-    let tempsTermometer = ((tempsMedium + 20)*100)/70;
-    let divTemp = document.createElement('div');
-    divTemp.id = "divtermometerInside";
-    divTemp.classList.add("DivtermometerInside");
-
-    document.getElementById("DivTermometer").appendChild(divTemp);
-    document.getElementById("divtermometerInside").style.width = `${tempsTermometer}%`;
-
-    if(tempsTermometer < 33){
-        document.getElementById("divtermometerInside").style.backgroundColor = "blue";
-    }
-    else if(tempsTermometer >= 33 && tempsTermometer < 66){
-        document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 100%)";
-    }
-    else if(tempsTermometer >= 66){
-        document.getElementById("divtermometerInside").style.backgroundImage = "linear-gradient(90deg, #64a7ff 0%, #eeb61d 50%, #fa6464 100%)";
-    }
-
-    document.getElementById("termometerActual").innerText = tempsMedium + "°C";
-
-    const droplets = 8;
-    for (let r = 0; r < droplets; r++)
-    {
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.setAttribute('class', 'bubble');
-        svg.setAttribute('preserveAspectRatio', 'xMinYMin');
-        svg.setAttribute('viewBox', '0 0 2 3');
-        svg.style.width = Math.floor(Math.random() * 13) + "px";
-        svg.style.height = svg.style.width;
-        svg.style.left = Math.floor(Math.random() * 85) + "%";
-        svg.style.top = Math.floor(Math.random() * 70) + "%";
-        
-        const x = Math.floor(Math.random() * 100);
-        const y = Math.floor(Math.random() * 100);
-        const a = Math.random() + 2;
-        
-        svg.style.setProperty('--x', 500);
-        svg.style.setProperty('--y', 0);
-        svg.style.setProperty('--a', a);
-        
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute('stroke', 'none');
-        path.setAttribute('d', 'M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z');
-        
-        svg.appendChild(path);
-        divTemp.appendChild(svg);
-
-        
-        const divTermometer = document.getElementById("divtermometerInside");
-        const computedStyle = window.getComputedStyle(divTermometer);
-        const size = computedStyle.getPropertyValue('width');
-        root = document.documentElement;
-        root.style.setProperty('--bubble', size);
-        console.log(size)
-    }  
-}   
-
-/**
- * Stop the emission of bubble
- */
-function StopBubble() {
-    if (document.getElementById('DivTermometer')) {
-        const divToDelete = document.getElementById('DivTermometer');
-        divToDelete.remove();
-    }
-  }  
-
 /* -------------------- Map Config -------------------- */
 
 /**
@@ -348,8 +245,6 @@ function updateTextAndHeight() {
     var height = document.getElementById('water').style.height; // e.g., "47.5px"
     var numericHeight = parseFloat(height); // Parse the float value from the string
     var result = (numericHeight - 45).toFixed(2); // Subtract 45 and round to two decimal places
-
-    //console.log(result);
 
     currentHeightSpan.textContent = result + "mm -";
     requestAnimationFrame(updateTextAndHeight);
