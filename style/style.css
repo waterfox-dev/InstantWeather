@@ -190,11 +190,12 @@ main
 
 .WeatherInfos-VitesseVent{
   font-size: 0.8vw;
-  margin-left: 5%;
-  text-align: center;
 }
 
-
+.WindText
+{
+    display: inline-block;
+}
 .WaterDiv
 {
     border: 1px solid white;
