@@ -137,7 +137,6 @@ function getWeather(insee, day)
 
                     if(window.innerWidth > 850){
                         elements.forEach(element => {
-                            console.log(element.style.width)
                             element.style.width = '2.8vw !important';
                             console.log(element.style.width)
                             element.style.height = '2.8vw !important';

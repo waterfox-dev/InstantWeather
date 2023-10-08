@@ -104,6 +104,8 @@ function updateDegree(newDegree)
         bgColorTwo = getCssVariable(degreeVars[range]);
 
         document.body.style.backgroundImage = `linear-gradient(45deg, ${bgColorOne} 0%, ${bgColorTwo} 100%)`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundAttachment = 'fixed';
     }
 }
 
@@ -113,6 +115,7 @@ function rain()
 
     let SnowContainer = document.createElement('div');
     SnowContainer.id = 'RainBackground';
+    SnowContainer.height = '150%'
     
     for (let r = 0; r < droplets; r++)
     {
@@ -158,6 +161,7 @@ function rain()
     let SnowContainer = document.createElement('div');
     SnowContainer.id = "snow";
     SnowContainer.classList.add("DivSnow");
+    SnowContainer.height = '150%'
     
     for (let r = 0; r < droplets; r++)
     {
