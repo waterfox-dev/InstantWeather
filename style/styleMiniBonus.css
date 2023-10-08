@@ -342,12 +342,12 @@
   }
 
   .container {
-    height: 150px;
+    height: 125px;
     width: 50px;
   }
   .waterNum
   {
-    font-size: 10px;
+    font-size: 9px;
     margin-left: -50px;
   }
 }
