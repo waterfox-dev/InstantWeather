@@ -204,8 +204,8 @@ function getWeather(insee, day)
 /**
  * Initiliasition of the script
  */
-function init(){
-
+function init()
+{
     document.getElementById("content").style.visibility = "hidden";
     document.getElementById("searchBar").style.marginTop = "40vh";
     document.getElementById("header").style.display = "block";
