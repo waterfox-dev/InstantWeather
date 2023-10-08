@@ -202,7 +202,6 @@ main
     width: 100%;
     height: 250px;
     border-radius: 10px; 
-
 }
 
 .WaterDivLeft {
@@ -220,7 +219,7 @@ main
 .WaterDivTitle
 {
     font-size: 2vw;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 5px;
 }
 
@@ -233,7 +232,7 @@ main
 }
 
 .WaterDivLeft > .InfoDiv > p{
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .LittlePanel > .MapDiv, .CompassDiv
