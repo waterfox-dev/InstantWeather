@@ -85,6 +85,21 @@ body
   border: 1px solid #2c0b8e;
   z-index: 10000;
   color: #000000;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .SearchCity button:hover{
