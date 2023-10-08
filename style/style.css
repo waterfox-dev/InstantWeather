@@ -183,8 +183,7 @@ main
 
 .LittlePanel{
   width: 42vw;
-  height: 42vw;
-  margin-bottom: -19vw;
+  height: 16vw;
 }
 
 .WeatherInfos-VitesseVent{
@@ -241,10 +240,9 @@ main
     margin-top: 25px;
     display: inline-block; 
     background-color: rgba(169, 163, 241, 0.35);
-    height: 48%;
+    height: 120%;
     width: 48%;
     border-radius: 10px;
-
 }
 
 .MapDiv
@@ -278,10 +276,10 @@ main
 
 @media screen and (max-width: 1200px) {
   .SmallTemp {
-    font-size: 3.5vw;
+    font-size: 3vw;
   }
   .BigTemp {
-    font-size: 6vw;
+    font-size: 5vw;
   }
 }
 
@@ -433,7 +431,7 @@ main
 
   .LittlePanel {
     width: 76.5vw;
-    height: 76.5vw;
+    height: 27.5vw;
     margin-left: 5%;
   }
 
