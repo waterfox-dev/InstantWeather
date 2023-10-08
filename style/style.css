@@ -202,13 +202,15 @@ main
   height: 16vw;
 }
 
+
 .WeatherInfos-VitesseVent{
-  font-size: 1.3vw;
-  margin-left: 5%;
-  display: block ruby;
+  font-size: 0.8vw;
 }
 
-
+.WindText
+{
+    display: inline-block;
+}
 .WaterDiv
 {
     border: 1px solid white;

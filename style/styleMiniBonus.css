@@ -333,12 +333,12 @@
   
 @media screen and (max-width: 850px) {
   .circle p{
-    font-size: 5vw;
+    font-size: 4vw;
   }
   
   .circle {
-    height: 25vw;
-    width: 25vw;
+    height: 21vw;
+    width: 21vw;
   }
 }
 
