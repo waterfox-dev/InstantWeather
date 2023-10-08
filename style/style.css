@@ -206,13 +206,14 @@ main
 }
 
 .WaterDivLeft {
-    flex: 1; /* Laisser WaterDivLeft prendre l'espace disponible */
-    padding-right: 20px; /* Espacement entre WaterDivLeft et WaterDivRight */
+    flex: 1.5; /* Laisser WaterDivLeft prendre l'espace disponible */
+    padding-top: 20px;
 }
 
 .WaterDivRight {
-    flex: 1; /* Laisser WaterDivRight prendre l'espace disponible */
-    text-align: right;
+  flex: 0.5;
+  text-align: right;
+  padding-right: 0.5vw;
 }
 
 
@@ -232,7 +233,7 @@ main
 }
 
 .WaterDivLeft > .InfoDiv > p{
-  font-size: 1vw;
+  font-size: 13px;
 }
 
 .LittlePanel > .MapDiv, .CompassDiv
@@ -423,8 +424,8 @@ main
   }
 
   .WaterDiv{
-    padding-left: 0%;
-    margin-left: 5%;
+    padding-left: 2%;
+    margin-left: 3%;
     width: 90%;
     height: auto;
   }
@@ -435,10 +436,12 @@ main
     margin-left: 5%;
   }
 
-  .leaflet-touch .leaflet-bar a {
-    width: 2.8vw !important;
-    height: 2.8vw !important;
-    line-height: 2.9vw !important;
+  .WaterDivLeft > .InfoDiv > p {
+    font-size: 2.5vw;
+  }
+
+  .WeatherInfos-VitesseVent {
+    font-size: 2vw;
   }
 }
 

@@ -128,29 +128,7 @@ function getWeather(insee, day)
                     let tempsMedium = (weather['tmax'] + weather['tmin']) / 2;
                     document.getElementById("medTemp").innerText = `${tempsMedium} °C`;
                     updateDegree(tempsMedium)
-                    StopBubble();
-                    // changeTermometer(tempsMedium);
                     updateWeatherSVG(weather['weather']); 
-
-
-                    const elements = document.querySelectorAll('.leaflet-touch .leaflet-bar a');
-
-                    if(window.innerWidth > 850){
-                        elements.forEach(element => {
-                            element.style.width = '2.8vw !important';
-                            console.log(element.style.width)
-                            element.style.height = '2.8vw !important';
-                            element.style.lineHeight = '2.8vw !important';
-                        });
-                    }
-                    else{
-                        console.log("bbb")
-                        elements.forEach(element => {
-                            element.style.width = '4.8vw !important';
-                            element.style.height = '4.8vw !important';
-                            element.style.lineHeight = '4.9vw !important';
-                        });
-                    }
     
                     StopSnow();
                     StopRain();
