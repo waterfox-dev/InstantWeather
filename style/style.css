@@ -325,12 +325,17 @@ main
   }
 
   .SearchBar {
-    font-size: 35px;
+    font-size: 4vw;
     margin-top: 2vh;
     margin-bottom: 0.5vh;
     padding: 0.7vh;
     transition-duration: 300ms;
     transition-timing-function: ease;
+  }
+
+  button
+  {
+    font-size: 3vw;
   }
 
 
@@ -454,7 +459,7 @@ main
   }
 
   .WaterDivLeft > .InfoDiv > p {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
 
   .WeatherInfos-VitesseVent {
